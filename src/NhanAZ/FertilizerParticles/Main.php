@@ -26,8 +26,7 @@ class Main extends PluginBase implements Listener
 		if ($event->getBlock()->getId() == 2) {
 			if ($item == 351) {
 				if($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
-					for ($i = 0; $i < 200; $i++) {
-
+					do {
 						$z1 = mt_rand(5, 20) / 10;
 						$y1 = mt_rand(11, 21) / 10;
 						$coordinates_particle = $block->add(0.5, $y1, $z1);
@@ -79,7 +78,7 @@ class Main extends PluginBase implements Listener
 						$coordinates_particle = $block->add($x7, $y8, $z6);
 						$summon_particle = new HappyVillagerParticle($coordinates_particle);
 						$block->getLevel()->addParticle($summon_particle);
-					}
+					}while(false);
 				}
 			}
 		}
