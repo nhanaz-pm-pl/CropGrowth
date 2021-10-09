@@ -1,15 +1,17 @@
-<h1>FertilizerParticles<img src="https://github.com/NhanAZ/FertilizerParticles/blob/main/icon.png" height="64" width="64"  align="left"></img></h1><br/>
-
 # General
-[![](https://poggit.pmmp.io/shield.state/FertilizerParticles)](https://poggit.pmmp.io/p/FertilizerParticles)
 
-A pocketmine plugin help show particles when you fertilize grass blocks (Not clean)
+When using bone meal on grass blocks in PocketMine API 3.23.1, you will not see green particles where grass grows like vanilla. This plugin will make you able to see green particles when using bone meal on grass blocks
 
-# Contact
+# TODO
+[ ] Green particles appear when using bone meal on crops
+[ ] Etc
+
+# Contacts
 If you encounter an error or would like to contribute to my plugin, contact me via the platforms below:
-- Discord: NhanAZ#9115
-- Xbox: NhanAZ
+
 - Zalo: @thanhnhanaz
+- Gmail: nhanaz@pm.me
+- Discord: NhanAZ#9115
 - FaceBook: fb.com/thanhnhanaz
 
 # License
