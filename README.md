@@ -1,6 +1,6 @@
 # General
 
-When using bone meal on grass blocks in PocketMine API 3.24.0, you will not see green particles where grass grows like vanilla. This plugin will make you able to see green particles when using bone meal on grass blocks
+When using bone meal on grass blocks in PocketMine API 3.25.0, you will not see green particles where grass grows like vanilla. This plugin will make you able to see green particles when using bone meal on grass blocks
 
 # Contacts
 If you encounter an error or would like to contribute to my plugin, contact me via the platforms below:
