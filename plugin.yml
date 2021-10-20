@@ -3,5 +3,5 @@ name: FertilizerParticles
 version: 0.0.1
 main: NhanAZ\FertilizerParticles\Main
 author: NhanAZ
-api: 3.24.0
+api: 3.25.0
 ...
