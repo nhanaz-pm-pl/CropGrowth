@@ -26,6 +26,7 @@ class Main extends PluginBase implements Listener
 		if ($event->getBlock()->getId() == 2) {
 			if ($item == 351) {
 				if($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
+					/** @phpstan-ignore-next-line */
 					do {
 						$z1 = mt_rand(5, 20) / 10;
 						$y1 = mt_rand(11, 21) / 10;
