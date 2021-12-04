@@ -1,5 +1,5 @@
 # General
-**A plugin that makes it possible to see green particles when using bone meal on grass blocks by NhanAZ for PocketMine-MP**
+**A plugin that makes it possible to see green particles when using bone meal on grass blocks**
 
 [![Poggit-CI](https://poggit.pmmp.io/ci.shield/nhanaz-pm-pl/FertilizerParticles/FertilizerParticles)](https://poggit.pmmp.io/ci.shield/nhanaz-pm-pl/FertilizerParticles/FertilizerParticles)
 [![](https://poggit.pmmp.io/shield.state/FertilizerParticles)](https://poggit.pmmp.io/p/FertilizerParticles)
