@@ -7,7 +7,7 @@ namespace NhanAZ\FertilizerParticles;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\level\particle\HappyVillagerParticle;
+use pocketmine\world\particle\HappyVillagerParticle;
 
 class Main extends PluginBase implements Listener
 {
