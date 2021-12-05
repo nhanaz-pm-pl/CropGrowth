@@ -69,7 +69,7 @@ class Main extends PluginBase implements Listener
 						$x6 = mt_rand(5, 20) / 10;
 						$y7 = mt_rand(11, 21) / 10;
 						$coordinates_particle = $block->add($x6, $y7, 0.5);
-						$summon_particle = new HappyVillagerParticle($coordinates_particle); 
+						$summon_particle = new HappyVillagerParticle($coordinates_particle);
 						$block->getLevel()->addParticle($summon_particle);
 
 						$x7 = mt_rand(5, 20) / 10;

@@ -1,7 +1,8 @@
 ---
 name: FertilizerParticles
-version: 0.0.2
+version: 1.0.0
 main: NhanAZ\FertilizerParticles\Main
+src-namespace-prefix: NhanAZ\FertilizerParticles
 author: NhanAZ
-api: 3.25.6
+api: 4.0.0
 ...
