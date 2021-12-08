@@ -4,5 +4,8 @@ version: 1.0.0
 main: NhanAZ\FertilizerParticles\Main
 src-namespace-prefix: NhanAZ\FertilizerParticles
 author: NhanAZ
+authors:
+  - ytbjero
+  - kaidoMC
 api: 4.0.0
 ...
