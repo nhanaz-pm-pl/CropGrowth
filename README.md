@@ -14,9 +14,6 @@
 | Discord  | NhanAZ#9115        |
 | Email    | NhanAZ@pm.me       |
 | Twitter  | @ThanhNhanAZ       |
-| Zalo     | @ThanhNhanAZ       |
-| FaceBook | fb.com/ThanhNhanAZ |
-
 
 # License
 [**GNU General Public License v3.0**](https://www.gnu.org/licenses/gpl-3.0.html)
