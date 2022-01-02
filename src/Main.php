@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NhanAZ\FertilizerParticles;
+namespace NhanAZ\CropGrowth;
 
 use pocketmine\block\Grass;
 use pocketmine\math\Vector3;
@@ -14,7 +14,7 @@ use pocketmine\world\particle\HappyVillagerParticle;
 
 /**
  * Class Main
- * @package NhanAZ\FertilizerParticles
+ * @package NhanAZ\CropGrowth
  */
 class Main extends PluginBase implements Listener
 {

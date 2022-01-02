@@ -1,11 +1,11 @@
 ---
-name: FertilizerParticles
+name: CropGrowth
 version: 1.0.0
-main: NhanAZ\FertilizerParticles\Main
-src-namespace-prefix: NhanAZ\FertilizerParticles
+main: NhanAZ\CropGrowth\Main
+src-namespace-prefix: NhanAZ\CropGrowth
 author: NhanAZ
 authors:
-  - ytbjero
   - kaidoMC
+  - YTBJero
 api: 4.0.0
 ...
