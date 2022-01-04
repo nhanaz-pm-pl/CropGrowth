@@ -1,6 +1,6 @@
 ---
 name: CropGrowth
-version: 1.0.0
+version: 2.0.0
 main: NhanAZ\CropGrowth\Main
 src-namespace-prefix: NhanAZ\CropGrowth
 author: NhanAZ
@@ -9,5 +9,5 @@ authors:
   - YTBJero
 api: 4.0.0
 website: https://github.com/NhanAZ
-description: Show particles when using bone meal on grass block
+description: Show particles when using bone meal on crops
 ...
