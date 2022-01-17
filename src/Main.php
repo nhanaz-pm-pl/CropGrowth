@@ -47,24 +47,25 @@ class Main extends PluginBase implements Listener
 					$this->spawnParticleEffect($position, $particleName);
 				}
 			}
-			if (
-				$blockID === VanillaBlocks::FERN()->getId() or
-				$blockID === VanillaBlocks::WHEAT()->getId() or
-				$blockID === VanillaBlocks::BAMBOO()->getId() or
-				$blockID === VanillaBlocks::POTATOES()->getId() or
-				$blockID === VanillaBlocks::BEETROOTS()->getId() or
-				$blockID === VanillaBlocks::SUGARCANE()->getId() or
-				$blockID === VanillaBlocks::COCOA_POD()->getId() or
-				$blockID === VanillaBlocks::MELON_STEM()->getId() or
-				$blockID === VanillaBlocks::OAK_SAPLING()->getId() or
-				$blockID === VanillaBlocks::PUMPKIN_STEM()->getId() or
-				$blockID === VanillaBlocks::BIRCH_SAPLING()->getId() or
-				$blockID === VanillaBlocks::ACACIA_SAPLING()->getId() or
-				$blockID === VanillaBlocks::JUNGLE_SAPLING()->getId() or
-				$blockID === VanillaBlocks::SPRUCE_SAPLING()->getId() or
-				$blockID === VanillaBlocks::DARK_OAK_SAPLING()->getId() or
-				$blockID === VanillaBlocks::SWEET_BERRY_BUSH()->getId()
-			) {
+			if (in_array($blockID, array(
+				VanillaBlocks::FERN()->getId(),
+				VanillaBlocks::WHEAT()->getId(),
+				VanillaBlocks::BAMBOO()->getId(),
+				VanillaBlocks::POTATOES()->getId(),
+				VanillaBlocks::BEETROOTS()->getId(),
+				VanillaBlocks::SUGARCANE()->getId(),
+				VanillaBlocks::COCOA_POD()->getId(),
+				VanillaBlocks::MELON_STEM()->getId(),
+				VanillaBlocks::OAK_SAPLING()->getId(),
+				VanillaBlocks::PUMPKIN_STEM()->getId(),
+				VanillaBlocks::BIRCH_SAPLING()->getId(),
+				VanillaBlocks::BAMBOO_SAPLING()->getId(),
+				VanillaBlocks::ACACIA_SAPLING()->getId(),
+				VanillaBlocks::JUNGLE_SAPLING()->getId(),
+				VanillaBlocks::SPRUCE_SAPLING()->getId(),
+				VanillaBlocks::DARK_OAK_SAPLING()->getId(),
+				VanillaBlocks::SWEET_BERRY_BUSH()->getId()
+			))) {
 				if ($event->getAction() === $rightClickBlock) {
 					$position = $block->getPosition()->add(0.5, 0.5, 0.5);
 					$particleName = "minecraft:crop_growth_emitter";
