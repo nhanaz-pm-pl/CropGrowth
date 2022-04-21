@@ -15,17 +15,14 @@ use pocketmine\event\block\StructureGrowEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\network\mcpe\protocol\SpawnParticleEffectPacket;
 
-class Main extends PluginBase implements Listener
-{
+class Main extends PluginBase implements Listener {
 
-	protected function onEnable(): void
-	{
+	protected function onEnable(): void {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
 	}
 
-	public function spawnParticleEffect(Vector3 $position, string $particleName): void
-	{
+	public function spawnParticleEffect(Vector3 $position, string $particleName): void {
 		$packet = new SpawnParticleEffectPacket();
 		$packet->position = $position;
 		$packet->particleName = $particleName;
@@ -33,8 +30,7 @@ class Main extends PluginBase implements Listener
 		$this->getServer()->broadcastPackets($recipients, [$packet]);
 	}
 
-	public function onPlayerInteract(PlayerInteractEvent $event): void
-	{
+	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
 		$blockID = $block->getId();
 		$item = $event->getItem();
@@ -75,8 +71,7 @@ class Main extends PluginBase implements Listener
 		}
 	}
 
-	public function onGrow($event): void
-	{
+	public function onGrow($event): void {
 		if ($this->getConfig()->get("advancedCropGrowthParticles") == true) {
 			$block = $event->getBlock();
 			$position = $block->getPosition()->add(0.5, 0.5, 0.5);
@@ -85,13 +80,11 @@ class Main extends PluginBase implements Listener
 		}
 	}
 
-	public function onBlockGrow(BlockGrowEvent $event): void
-	{
+	public function onBlockGrow(BlockGrowEvent $event): void {
 		$this->onGrow($event);
 	}
 
-	public function onStructureGrow(StructureGrowEvent $event): void
-	{
+	public function onStructureGrow(StructureGrowEvent $event): void {
 		$this->onGrow($event);
 	}
 }
