@@ -4,12 +4,6 @@ version: 2.0.2
 main: NhanAZ\CropGrowth\Main
 src-namespace-prefix: NhanAZ\CropGrowth
 author: NhanAZ
-authors:
-  - kaidoMC
-  - YTBJero
-  - NgLamVN
-  - Mcbeany
-  - Endermanbugzjfc
 api: 4.3.0
 website: https://github.com/NhanAZ
 description: Show particles when using bone meal on crops
