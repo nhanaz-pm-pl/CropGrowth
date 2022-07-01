@@ -26,7 +26,6 @@ class Main extends PluginBase implements Listener {
 		$packet = new SpawnParticleEffectPacket();
 		$packet->position = $position;
 		$packet->particleName = $particleName;
-		$packet->molangVariablesJson = '';
 		$recipients = $this->getServer()->getOnlinePlayers();
 		$this->getServer()->broadcastPackets($recipients, [$packet]);
 	}
