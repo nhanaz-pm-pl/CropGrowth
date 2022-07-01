@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace NhanAZ\CropGrowth;
 
+use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\item\VanillaItems;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\network\mcpe\protocol\SpawnParticleEffectPacket;
@@ -19,10 +21,15 @@ class Main extends PluginBase implements Listener {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
-	private function spawnParticleEffect(Vector3 $position, string $particleName): void {
+	private function spawnParticleEffect(Vector3 $position, bool $particleArea): void {
 		$packet = new SpawnParticleEffectPacket();
 		$packet->position = $position;
-		$packet->particleName = $particleName;
+		if ($particleArea) {
+			$packet->particleName = "minecraft:crop_growth_area_emitter";
+		} else {
+			$packet->position = $position->add(0.5, 0.5, 0.5);
+			$packet->particleName = "minecraft:crop_growth_emitter";
+		}
 		$recipients = $this->getServer()->getOnlinePlayers();
 		$this->getServer()->broadcastPackets($recipients, [$packet]);
 	}
@@ -31,19 +38,23 @@ class Main extends PluginBase implements Listener {
 		$block = $event->getBlock();
 		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
 			if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
+
+				# Crop Ids With Area Emitter
 				if (in_array($block->getId(), Crops::CropIdsWithAreaEmitter())) {
 					if ($block->getID() === BlockLegacyIds::GRASS) {
-						$position = $block->getPosition()->add(0.5, 1.5, 0.5);
+						if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
+							$position = $block->getPosition()->add(0.5, 1.5, 0.5);
+							$this->spawnParticleEffect($position, true);
+						}
 					} else {
 						$position = $block->getPosition()->add(0.5, 0.5, 0.5);
+						$this->spawnParticleEffect($position, true);
 					}
-					$particleName = "minecraft:crop_growth_area_emitter";
-					$this->spawnParticleEffect($position, $particleName);
 				}
+
+				# Crop Ids With Emitter
 				if (in_array($block->getId(), Crops::CropIdsWithEmitter())) {
-					$position = $block->getPosition()->add(0.5, 0.5, 0.5);
-					$particleName = "minecraft:crop_growth_emitter";
-					$this->spawnParticleEffect($position, $particleName);
+					$this->spawnParticleEffect($block->getPosition(), false);
 				}
 			}
 		}
