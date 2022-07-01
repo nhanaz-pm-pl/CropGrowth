@@ -1,5 +1,0 @@
----
-# Note that this is an experimental option that only turns on (true) when you know exactly what you are doing as it may affect the performance of the server
-# If true, when the plant grows, there will be particles around.
-advancedCropGrowthParticles: false
-...
