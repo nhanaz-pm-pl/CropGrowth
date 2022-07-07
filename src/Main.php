@@ -10,7 +10,6 @@ use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\item\VanillaItems;
 use pocketmine\block\VanillaBlocks;
-use pocketmine\block\BlockLegacyIds;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\network\mcpe\protocol\SpawnParticleEffectPacket;
 use NhanAZ\CropGrowth\Crops;
@@ -40,8 +39,8 @@ class Main extends PluginBase implements Listener {
 			if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
 
 				# Crop Ids With Area Emitter
-				if (in_array($block->getId(), Crops::CropIdsWithAreaEmitter())) {
-					if ($block->getID() === BlockLegacyIds::GRASS) {
+				if (in_array($block->getTypeId(), Crops::CropIdsWithAreaEmitter())) {
+					if ($block->isSameType(VanillaBlocks::GRASS())) {
 						if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
 							$position = $block->getPosition()->add(0.5, 1.5, 0.5);
 							$this->spawnParticleEffect($position, true);
@@ -53,7 +52,7 @@ class Main extends PluginBase implements Listener {
 				}
 
 				# Crop Ids With Emitter
-				if (in_array($block->getId(), Crops::CropIdsWithEmitter())) {
+				if (in_array($block->getTypeId(), Crops::CropIdsWithEmitter())) {
 					$this->spawnParticleEffect($block->getPosition(), false);
 				}
 			}

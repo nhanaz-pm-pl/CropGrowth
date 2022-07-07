@@ -5,72 +5,72 @@ declare(strict_types=1);
 namespace NhanAZ\CropGrowth;
 
 use pocketmine\block\VanillaBlocks;
-use pocketmine\block\BlockLegacyIds;
 
 class Crops {
 
 	public static function CropIdsWithAreaEmitter(): array {
 		return [
 			# Blocks
-			BlockLegacyIds::GRASS,
+			VanillaBlocks::GRASS()->getTypeId(),
 
 			# Flowers
-			VanillaBlocks::DANDELION()->getID(),
-			VanillaBlocks::POPPY()->getID(),
-			VanillaBlocks::BLUE_ORCHID()->getID(),
-			VanillaBlocks::ALLIUM()->getID(),
-			VanillaBlocks::AZURE_BLUET()->getID(),
-			VanillaBlocks::RED_TULIP()->getID(),
-			VanillaBlocks::ORANGE_TULIP()->getID(),
-			VanillaBlocks::WHITE_TULIP()->getID(),
-			VanillaBlocks::PINK_TULIP()->getID(),
-			VanillaBlocks::OXEYE_DAISY()->getID(),
-			VanillaBlocks::CORNFLOWER()->getID(),
-			VanillaBlocks::LILY_OF_THE_VALLEY()->getID(),
+			VanillaBlocks::DANDELION()->getTypeId(),
+			VanillaBlocks::POPPY()->getTypeId(),
+			VanillaBlocks::BLUE_ORCHID()->getTypeId(),
+			VanillaBlocks::ALLIUM()->getTypeId(),
+			VanillaBlocks::AZURE_BLUET()->getTypeId(),
+			VanillaBlocks::RED_TULIP()->getTypeId(),
+			VanillaBlocks::ORANGE_TULIP()->getTypeId(),
+			VanillaBlocks::WHITE_TULIP()->getTypeId(),
+			VanillaBlocks::PINK_TULIP()->getTypeId(),
+			VanillaBlocks::OXEYE_DAISY()->getTypeId(),
+			VanillaBlocks::CORNFLOWER()->getTypeId(),
+			VanillaBlocks::LILY_OF_THE_VALLEY()->getTypeId(),
 		];
 	}
 
 	public static function CropIdsWithEmitter(): array {
 		return [
 			# Saplings
-			VanillaBlocks::OAK_SAPLING()->getId(),
-			VanillaBlocks::SPRUCE_SAPLING()->getId(),
-			VanillaBlocks::BIRCH_SAPLING()->getId(),
-			VanillaBlocks::JUNGLE_SAPLING()->getId(),
-			VanillaBlocks::ACACIA_SAPLING()->getId(),
-			VanillaBlocks::DARK_OAK_SAPLING()->getId(),
+			VanillaBlocks::OAK_SAPLING()->getTypeId(),
+			VanillaBlocks::SPRUCE_SAPLING()->getTypeId(),
+			VanillaBlocks::BIRCH_SAPLING()->getTypeId(),
+			VanillaBlocks::JUNGLE_SAPLING()->getTypeId(),
+			VanillaBlocks::ACACIA_SAPLING()->getTypeId(),
+			VanillaBlocks::DARK_OAK_SAPLING()->getTypeId(),
 
 			# Seeds
-			VanillaBlocks::WHEAT()->getId(),
-			VanillaBlocks::BEETROOTS()->getId(),
-			VanillaBlocks::POTATOES()->getId(),
-			VanillaBlocks::CARROTS()->getId(),
+			VanillaBlocks::WHEAT()->getTypeId(),
+			VanillaBlocks::BEETROOTS()->getTypeId(),
+			VanillaBlocks::POTATOES()->getTypeId(),
+			VanillaBlocks::CARROTS()->getTypeId(),
 
 			# Stems
-			VanillaBlocks::PUMPKIN_STEM()->getId(),
-			VanillaBlocks::MELON_STEM()->getId(),
+			VanillaBlocks::PUMPKIN_STEM()->getTypeId(),
+			VanillaBlocks::MELON_STEM()->getTypeId(),
 
 			# Grasses
-			VanillaBlocks::FERN()->getId(),
-			VanillaBlocks::TALL_GRASS()->getId(),
+			VanillaBlocks::FERN()->getTypeId(),
+			VanillaBlocks::TALL_GRASS()->getTypeId(),
 
 			# Flowers
-			VanillaBlocks::LILAC()->getId(),
-			VanillaBlocks::ROSE_BUSH()->getId(),
-			VanillaBlocks::PEONY()->getId(),
+			VanillaBlocks::LILAC()->getTypeId(),
+			VanillaBlocks::ROSE_BUSH()->getTypeId(),
+			VanillaBlocks::PEONY()->getTypeId(),
+			VanillaBlocks::SUNFLOWER()->getTypeId(),
 
 			# Bamboos
-			VanillaBlocks::BAMBOO()->getId(),
-			VanillaBlocks::BAMBOO_SAPLING()->getId(),
+			VanillaBlocks::BAMBOO()->getTypeId(),
+			VanillaBlocks::BAMBOO_SAPLING()->getTypeId(),
 
 			# Mushrooms
-			VanillaBlocks::RED_MUSHROOM()->getId(),
-			VanillaBlocks::BROWN_MUSHROOM()->getId(),
+			VanillaBlocks::RED_MUSHROOM()->getTypeId(),
+			VanillaBlocks::BROWN_MUSHROOM()->getTypeId(),
 
 			# Other Crops
-			VanillaBlocks::COCOA_POD()->getId(),
-			VanillaBlocks::SUGARCANE()->getId(),
-			VanillaBlocks::SWEET_BERRY_BUSH()->getId(),
+			VanillaBlocks::COCOA_POD()->getTypeId(),
+			VanillaBlocks::SUGARCANE()->getTypeId(),
+			VanillaBlocks::SWEET_BERRY_BUSH()->getTypeId(),
 		];
 	}
 }
