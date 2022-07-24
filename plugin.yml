@@ -2,7 +2,6 @@
 name: CropGrowth
 version: 2.0.4+dev
 main: NhanAZ\CropGrowth\Main
-src-namespace-prefix: NhanAZ\CropGrowth
 author: NhanAZ
 api: 5.0.0
 website: https://github.com/NhanAZ
