@@ -29,9 +29,10 @@ class Main extends PluginBase implements Listener {
 	}
 
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
+		var_dump($event->getBlock()->getTypeId());
 		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
 			if (PlayerInteractEvent::RIGHT_CLICK_BLOCK === $event->getAction()) {
-				if (in_array($event->getBlock()->getTypeId(), Crops::crops(), true)) {
+				if (in_array($event->getBlock()->getTypeId(), Plants::plants(), true)) {
 					$this->addParticle($event->getBlock());
 					$this->addSound($event->getBlock());
 				}
