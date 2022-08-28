@@ -39,8 +39,9 @@ class Main extends PluginBase implements Listener {
 				if (in_array($block->getTypeId(), Plants::plants(), true)) {
 					if ($block instanceof Dirt) { # Dirt (Rooted Dirt)
 						if ($block->getDirtType()->equals(DirtType::ROOTED())) {
-							# TODO: Only executed if below Rooted_Block is AIR
-							$this->playParticleAndSound($world, $blockPos);
+							if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
+								$this->playParticleAndSound($world, $blockPos);
+							}
 						}
 						return;
 					}
