@@ -56,7 +56,7 @@ class Plants {
 
 			VanillaBlocks::SWEET_BERRY_BUSH()->getTypeId(), # Sweet berry bush
 
-			# TODO: Sea Pickle
+			VanillaBlocks::SEA_PICKLE()->getTypeId(), # Sea Pickle
 
 			VanillaBlocks::SUGARCANE()->getTypeId(), # Sugar Cane‌
 

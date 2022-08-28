@@ -9,9 +9,11 @@ use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
 use pocketmine\block\Dirt;
 use pocketmine\block\utils\DirtType;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\VanillaItems;
+use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\world\World;
@@ -35,9 +37,16 @@ class Main extends PluginBase implements Listener {
 		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
 			if (PlayerInteractEvent::RIGHT_CLICK_BLOCK === $event->getAction()) {
 				if (in_array($block->getTypeId(), Plants::plants(), true)) {
-					if ($block instanceof Dirt) {
+					if ($block instanceof Dirt) { # Dirt (Rooted Dirt)
 						if ($block->getDirtType()->equals(DirtType::ROOTED())) {
 							# TODO: Only executed if below Rooted_Block is AIR
+							$this->playParticleAndSound($world, $blockPos);
+						}
+						return;
+					}
+					if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) {
+						if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::CORAL_BLOCK())) {
+							# TODO: Only executed if Sea_Pickle is inside Water
 							$this->playParticleAndSound($world, $blockPos);
 						}
 						return;
