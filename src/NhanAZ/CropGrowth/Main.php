@@ -44,14 +44,19 @@ class Main extends PluginBase implements Listener {
 						}
 						return;
 					}
-					if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) {
+					if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) { # Sea Pickle
 						if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::CORAL_BLOCK())) {
 							# TODO: Only executed if Sea_Pickle is inside Water
 							$this->playParticleAndSound($world, $blockPos);
 						}
 						return;
 					}
-					# TODO: Only executed if above the Grass_Block is Air
+					if ($block->isSameType(VanillaBlocks::GRASS())) { # Grass
+						if ($block->getSide(FACING::UP)->isSameType(VanillaBlocks::AIR())) {
+							$this->playParticleAndSound($world, $blockPos);
+						}
+						return;
+					}
 					$this->playParticleAndSound($world, $blockPos);
 				}
 			}
