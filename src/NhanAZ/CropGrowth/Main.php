@@ -39,13 +39,22 @@ class Main extends PluginBase implements Listener {
 		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
 			if (PlayerInteractEvent::RIGHT_CLICK_BLOCK === $event->getAction()) {
 				if (in_array($block->getTypeId(), Plants::plants(), true)) {
-					if ($block instanceof Dirt) { # Dirt (Rooted Dirt)
-						if ($block->getDirtType()->equals(DirtType::ROOTED())) {
+					if ($block instanceof Dirt) { # Dirts
+						if ($block->getDirtType()->equals(DirtType::ROOTED())) { # Rooted Dirt
 							if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
 								$this->playParticleAndSound($world, $blockPos);
+								return;
+							}
+							return;
+						}
+						foreach ($blockPos->sides() as $vector3) { # Dirt
+							if ($world->getBlock($vector3) instanceof Water) {
+								if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::WATER())) {
+									$this->playParticleAndSound($world, $blockPos);
+								}
+								break;
 							}
 						}
-						# TODO : Executed when the dirt block is in the water
 						return;
 					}
 					if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) { # Sea Pickle
