@@ -11,6 +11,7 @@ use pocketmine\block\CoralBlock;
 use pocketmine\block\Dirt;
 use pocketmine\block\utils\DirtType;
 use pocketmine\block\VanillaBlocks;
+use pocketmine\block\Water;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\VanillaItems;
@@ -50,8 +51,12 @@ class Main extends PluginBase implements Listener {
 						$blockSideDown = $block->getSide(Facing::DOWN);
 						if ($blockSideDown instanceof CoralBlock) {
 							if (!$blockSideDown->isDead()) {
-								# TODO: Only executed if Sea_Pickle is inside Water
-								$this->playParticleAndSound($world, $blockPos);
+								foreach ($blockPos->sides() as $vector3) {
+									if ($world->getBlock($vector3) instanceof Water) {
+										$this->playParticleAndSound($world, $blockPos);
+										break;
+									}
+								}
 							}
 						}
 						return;
