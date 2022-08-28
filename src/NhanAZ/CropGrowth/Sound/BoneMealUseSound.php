@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NhanAZ\CropGrowth;
+namespace NhanAZ\CropGrowth\Sound;
 
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;

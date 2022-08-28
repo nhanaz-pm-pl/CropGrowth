@@ -8,7 +8,7 @@ use pocketmine\block\VanillaBlocks;
 
 class Crops {
 
-	public static function CropIdsWithAreaEmitter(): array {
+	public static function crops(): array {
 		return [
 			# Blocks
 			VanillaBlocks::GRASS()->getTypeId(),
@@ -26,11 +26,7 @@ class Crops {
 			VanillaBlocks::OXEYE_DAISY()->getTypeId(),
 			VanillaBlocks::CORNFLOWER()->getTypeId(),
 			VanillaBlocks::LILY_OF_THE_VALLEY()->getTypeId(),
-		];
-	}
 
-	public static function CropIdsWithEmitter(): array {
-		return [
 			# Saplings
 			VanillaBlocks::OAK_SAPLING()->getTypeId(),
 			VanillaBlocks::SPRUCE_SAPLING()->getTypeId(),
