@@ -7,7 +7,6 @@ namespace NhanAZ\CropGrowth;
 use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
-use pocketmine\block\Block;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\VanillaItems;
@@ -20,21 +19,13 @@ class Main extends PluginBase implements Listener {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
-	private function addParticle(Block $block) {
-		$block->getPosition()->getWorld()->addParticle($block->getPosition(), new CropGrowthParticle());
-	}
-
-	private function addSound(Block $block): void {
-		$block->getPosition()->getWorld()->addSound(Math::center($block->getPosition()), new BoneMealUseSound());
-	}
-
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
-		var_dump($event->getBlock()->getTypeId());
+		$block = $event->getBlock();
 		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
 			if (PlayerInteractEvent::RIGHT_CLICK_BLOCK === $event->getAction()) {
 				if (in_array($event->getBlock()->getTypeId(), Plants::plants(), true)) {
-					$this->addParticle($event->getBlock());
-					$this->addSound($event->getBlock());
+					$block->getPosition()->getWorld()->addParticle($block->getPosition(), new CropGrowthParticle());
+					$block->getPosition()->getWorld()->addSound(Math::center($block->getPosition()), new BoneMealUseSound());
 				}
 			}
 		}
