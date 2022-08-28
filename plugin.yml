@@ -5,5 +5,5 @@ main: NhanAZ\CropGrowth\Main
 author: NhanAZ
 api: 5.0.0
 website: https://github.com/NhanAZ
-description: Show particles when using bone meal on crops
+description: Play particle and sound when using bone meal on crops
 ...

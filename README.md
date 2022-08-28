@@ -1,5 +1,5 @@
 # General
-**Show particles when using bone meal on crops**
+**Play particle and sound when using bone meal on crops**
 
 ![image](https://user-images.githubusercontent.com/60387689/178136951-db5c3b65-80c2-462b-b3cf-50b90992d7b5.png)
 
