@@ -21,11 +21,13 @@ class Main extends PluginBase implements Listener {
 
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
+		$blockPos = $block->getPosition();
+		$world = $blockPos->getWorld();
 		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
 			if (PlayerInteractEvent::RIGHT_CLICK_BLOCK === $event->getAction()) {
 				if (in_array($event->getBlock()->getTypeId(), Plants::plants(), true)) {
-					$block->getPosition()->getWorld()->addParticle($block->getPosition(), new CropGrowthParticle());
-					$block->getPosition()->getWorld()->addSound(Math::center($block->getPosition()), new BoneMealUseSound());
+					$world->addParticle($blockPos, new CropGrowthParticle());
+					$world->addSound(Math::center($blockPos), new BoneMealUseSound());
 				}
 			}
 		}
