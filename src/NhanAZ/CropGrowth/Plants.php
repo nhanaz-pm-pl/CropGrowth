@@ -96,7 +96,7 @@ class Plants {
 			# TODO: Big Dripleaf
 			# TODO: Small Dripleaf
 
-			# TODO: Rooted Dirt
+			VanillaBlocks::DIRT()->getTypeId(), # Dirt (Rooted Dirt)
 
 			# TODO: Mangrove Leaves
 
