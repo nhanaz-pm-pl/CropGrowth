@@ -7,6 +7,7 @@ namespace NhanAZ\CropGrowth;
 use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
+use pocketmine\block\CoralBlock;
 use pocketmine\block\Dirt;
 use pocketmine\block\utils\DirtType;
 use pocketmine\block\VanillaBlocks;
@@ -46,9 +47,12 @@ class Main extends PluginBase implements Listener {
 						return;
 					}
 					if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) { # Sea Pickle
-						if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::CORAL_BLOCK())) {
-							# TODO: Only executed if Sea_Pickle is inside Water
-							$this->playParticleAndSound($world, $blockPos);
+						$blockSideDown = $block->getSide(Facing::DOWN);
+						if ($blockSideDown instanceof CoralBlock) {
+							if (!$blockSideDown->isDead()) {
+								# TODO: Only executed if Sea_Pickle is inside Water
+								$this->playParticleAndSound($world, $blockPos);
+							}
 						}
 						return;
 					}
