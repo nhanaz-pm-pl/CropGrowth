@@ -22,10 +22,10 @@ class Main extends PluginBase implements Listener {
 
 	private function spawnParticleEffect(Vector3 $position, bool $particleArea): void {
 		if ($particleArea) {
-			$particleName = 'minecraft:crop_growth_area_emitter';
+			$particleName = "minecraft:crop_growth_area_emitter";
 		} else {
 			$position = $position->add(0.5, 0.5, 0.5);
-			$particleName = 'minecraft:crop_growth_emitter';
+			$particleName = "minecraft:crop_growth_emitter";
 		}
 		$packet = SpawnParticleEffectPacket::create(DimensionIds::OVERWORLD, -1, $position, $particleName, null);
 		$recipients = $this->getServer()->getOnlinePlayers();
