@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NhanAZ\CropGrowth;
 
+use _64FF00\PurePerms\Commands\PPInfo;
 use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
@@ -77,7 +78,13 @@ class Main extends PluginBase implements Listener {
 						}
 						return;
 					}
-					# TODO : Only execute playParticleAndSound() when above the BAMBOO() and BAMBOO_SAPLING() is AIR()
+					if ($block->isSameType(VanillaBlocks::BAMBOO()) ||
+						$block->isSameType(VanillaBlocks::BAMBOO_SAPLING())) { # Bamboo and Bamboo Sapling
+						if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
+							$this->playParticleAndSound($world, $blockPos);
+						}
+						return;
+					}
 					$this->playParticleAndSound($world, $blockPos);
 				}
 			}
