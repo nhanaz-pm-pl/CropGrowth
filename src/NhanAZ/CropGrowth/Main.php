@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NhanAZ\CropGrowth;
 
-use _64FF00\PurePerms\Commands\PPInfo;
 use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
