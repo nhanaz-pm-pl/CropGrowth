@@ -45,6 +45,7 @@ class Main extends PluginBase implements Listener {
 								$this->playParticleAndSound($world, $blockPos);
 							}
 						}
+						# TODO : Executed when the dirt block is in the water
 						return;
 					}
 					if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) { # Sea Pickle
@@ -67,6 +68,7 @@ class Main extends PluginBase implements Listener {
 						}
 						return;
 					}
+					# TODO : Only execute playParticleAndSound() when above the BAMBOO() and BAMBOO_SAPLING() is AIR()
 					$this->playParticleAndSound($world, $blockPos);
 				}
 			}
