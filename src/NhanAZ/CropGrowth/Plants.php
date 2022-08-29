@@ -13,68 +13,68 @@ class Plants {
 	 */
 	public static function plants(): array {
 		return [
-			VanillaBlocks::WHEAT()->getTypeId(), # Wheat
-			VanillaBlocks::CARROTS()->getTypeId(), # Carrots
-			VanillaBlocks::POTATOES()->getTypeId(), # Potatoes
+			VanillaBlocks::WHEAT(), # Wheat
+			VanillaBlocks::CARROTS(), # Carrots
+			VanillaBlocks::POTATOES(), # Potatoes
 
-			VanillaBlocks::BEETROOTS()->getTypeId(), # Beetroots
+			VanillaBlocks::BEETROOTS(), # Beetroots
 
 			# [https://minecraft.fandom.com/wiki/Bamboo#Data_values]
-			VanillaBlocks::BAMBOO()->getTypeId(), # Bamboo
-			VanillaBlocks::BAMBOO_SAPLING()->getTypeId(), # Bamboo Sapling
+			VanillaBlocks::BAMBOO(), # Bamboo
+			VanillaBlocks::BAMBOO_SAPLING(), # Bamboo Sapling
 
-			VanillaBlocks::MELON_STEM()->getTypeId(), # Melon Seeds
-			VanillaBlocks::PUMPKIN_STEM()->getTypeId(), # Pumpkin Seeds
+			VanillaBlocks::MELON_STEM(), # Melon Seeds
+			VanillaBlocks::PUMPKIN_STEM(), # Pumpkin Seeds
 
 			# Saplings [https://minecraft.fandom.com/wiki/Sapling#Data_values]
-			VanillaBlocks::OAK_SAPLING()->getTypeId(), # Oak Sapling
-			VanillaBlocks::SPRUCE_SAPLING()->getTypeId(), # Spruce Sapling
-			VanillaBlocks::BIRCH_SAPLING()->getTypeId(), # Birch Sapling
-			VanillaBlocks::JUNGLE_SAPLING()->getTypeId(), # Jungle Sapling
-			VanillaBlocks::ACACIA_SAPLING()->getTypeId(), # Acacia Sapling
-			VanillaBlocks::DARK_OAK_SAPLING()->getTypeId(), # Dark Oak Sapling
+			VanillaBlocks::OAK_SAPLING(), # Oak Sapling
+			VanillaBlocks::SPRUCE_SAPLING(), # Spruce Sapling
+			VanillaBlocks::BIRCH_SAPLING(), # Birch Sapling
+			VanillaBlocks::JUNGLE_SAPLING(), # Jungle Sapling
+			VanillaBlocks::ACACIA_SAPLING(), # Acacia Sapling
+			VanillaBlocks::DARK_OAK_SAPLING(), # Dark Oak Sapling
 			# TODO: Mangrove Propagule
 			# TODO: Azalea
 			# TODO: Flowering Azalea
 			# TODO: Mangrove Propagule (not hanging)
 
-			VanillaBlocks::SUNFLOWER()->getTypeId(), # Sunflowers
-			VanillaBlocks::LILAC()->getTypeId(), # Lilacs
-			VanillaBlocks::ROSE_BUSH()->getTypeId(), # Rose bushes
-			VanillaBlocks::PEONY()->getTypeId(), # Peonies
+			VanillaBlocks::SUNFLOWER(), # Sunflowers
+			VanillaBlocks::LILAC(), # Lilacs
+			VanillaBlocks::ROSE_BUSH(), # Rose bushes
+			VanillaBlocks::PEONY(), # Peonies
 
 			# Grass(s) [https://minecraft.fandom.com/wiki/Grass#Data_values]
-			VanillaBlocks::FERN()->getTypeId(), # Ferns (Grass and fern)
-			VanillaBlocks::TALL_GRASS()->getTypeId(), # Tall Grass (Double Tallgrass and Large Fern)
+			VanillaBlocks::FERN(), # Ferns (Grass and fern)
+			VanillaBlocks::TALL_GRASS(), # Tall Grass (Double Tallgrass and Large Fern)
 			# TODO: Seagrass
 
 			# Mushrooms [https://minecraft.fandom.com/wiki/Mushroom#Data_values]
-			VanillaBlocks::BROWN_MUSHROOM()->getTypeId(), # Brown Mushroom
-			VanillaBlocks::RED_MUSHROOM()->getTypeId(), # Red Mushroom
+			VanillaBlocks::BROWN_MUSHROOM(), # Brown Mushroom
+			VanillaBlocks::RED_MUSHROOM(), # Red Mushroom
 
-			VanillaBlocks::COCOA_POD()->getTypeId(), # Cocoa
+			VanillaBlocks::COCOA_POD(), # Cocoa
 
-			VanillaBlocks::SWEET_BERRY_BUSH()->getTypeId(), # Sweet berry bush
+			VanillaBlocks::SWEET_BERRY_BUSH(), # Sweet berry bush
 
-			VanillaBlocks::SEA_PICKLE()->getTypeId(), # Sea Pickle
+			VanillaBlocks::SEA_PICKLE(), # Sea Pickle
 
-			VanillaBlocks::SUGARCANE()->getTypeId(), # Sugar Cane‌
+			VanillaBlocks::SUGARCANE(), # Sugar Cane‌
 
 			# TODO: Kelp
 
 			# Flower [https://minecraft.fandom.com/wiki/Flower#Data_values]
-			VanillaBlocks::DANDELION()->getTypeId(), # Dandelion
-			VanillaBlocks::POPPY()->getTypeId(), # Poppy
-			VanillaBlocks::BLUE_ORCHID()->getTypeId(), # Blue Orchid
-			VanillaBlocks::ALLIUM()->getTypeId(), # Allium
-			VanillaBlocks::AZURE_BLUET()->getTypeId(), # Azure Bluet
-			VanillaBlocks::RED_TULIP()->getTypeId(), # Red Tulip
-			VanillaBlocks::ORANGE_TULIP()->getTypeId(), # Orange Tulip
-			VanillaBlocks::WHITE_TULIP()->getTypeId(), # White Tulip
-			VanillaBlocks::PINK_TULIP()->getTypeId(), # Pink Tulip
-			VanillaBlocks::OXEYE_DAISY()->getTypeId(), # Oxeye Daisy
-			VanillaBlocks::CORNFLOWER()->getTypeId(), # Cornflower
-			VanillaBlocks::LILY_OF_THE_VALLEY()->getTypeId(), # Lily of the Valley
+			VanillaBlocks::DANDELION(), # Dandelion
+			VanillaBlocks::POPPY(), # Poppy
+			VanillaBlocks::BLUE_ORCHID(), # Blue Orchid
+			VanillaBlocks::ALLIUM(), # Allium
+			VanillaBlocks::AZURE_BLUET(), # Azure Bluet
+			VanillaBlocks::RED_TULIP(), # Red Tulip
+			VanillaBlocks::ORANGE_TULIP(), # Orange Tulip
+			VanillaBlocks::WHITE_TULIP(), # White Tulip
+			VanillaBlocks::PINK_TULIP(), # Pink Tulip
+			VanillaBlocks::OXEYE_DAISY(), # Oxeye Daisy
+			VanillaBlocks::CORNFLOWER(), # Cornflower
+			VanillaBlocks::LILY_OF_THE_VALLEY(), # Lily of the Valley
 			# TODO: Wither Rose [Java Only]
 			# Sunflower [Imported]
 			# Lilac [Imported]
@@ -96,13 +96,13 @@ class Plants {
 			# TODO: Big Dripleaf
 			# TODO: Small Dripleaf
 
-			VanillaBlocks::DIRT()->getTypeId(), # Dirt (Rooted Dirt)
+			VanillaBlocks::DIRT(), # Dirt (Rooted Dirt)
 
 			# TODO: Mangrove Leaves
 
 			# Mangrove Propagule [Mentioned]
 
-			VanillaBlocks::GRASS()->getTypeId(), # Grass Block
+			VanillaBlocks::GRASS(), # Grass Block
 		];
 	}
 }

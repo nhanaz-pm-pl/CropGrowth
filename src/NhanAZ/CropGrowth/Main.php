@@ -19,7 +19,6 @@ use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\world\World;
-use function in_array;
 
 class Main extends PluginBase implements Listener {
 
@@ -38,53 +37,52 @@ class Main extends PluginBase implements Listener {
 		$world = $blockPos->getWorld();
 		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
 			if (PlayerInteractEvent::RIGHT_CLICK_BLOCK === $event->getAction()) {
-				if (in_array($block->getTypeId(), Plants::plants(), true)) {
-					if ($block instanceof Dirt) { # Dirts
-						if ($block->getDirtType()->equals(DirtType::ROOTED())) { # Rooted Dirt
-							if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
-								$this->playParticleAndSound($world, $blockPos);
+				foreach (Plants::plants() as $plant) {
+					if ($block->isSameType($plant)) {
+						if ($block instanceof Dirt) { # Dirts
+							if ($block->getDirtType()->equals(DirtType::ROOTED())) { # Rooted Dirt
+								if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
+									$this->playParticleAndSound($world, $blockPos);
+								}
 								return;
+							}
+							foreach ($blockPos->sides() as $vector3) { # Dirt
+								if ($world->getBlock($vector3) instanceof Water) {
+									$this->playParticleAndSound($world, $blockPos);
+									break;
+								}
 							}
 							return;
 						}
-						foreach ($blockPos->sides() as $vector3) { # Dirt
-							if ($world->getBlock($vector3) instanceof Water) {
-								if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::WATER())) {
-									$this->playParticleAndSound($world, $blockPos);
-								}
-								break;
-							}
-						}
-						return;
-					}
-					if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) { # Sea Pickle
-						$blockSideDown = $block->getSide(Facing::DOWN);
-						if ($blockSideDown instanceof CoralBlock) {
-							if (!$blockSideDown->isDead()) {
-								foreach ($blockPos->sides() as $vector3) {
-									if ($world->getBlock($vector3) instanceof Water) {
-										$this->playParticleAndSound($world, $blockPos);
-										break;
+						if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) { # Sea Pickle
+							$blockSideDown = $block->getSide(Facing::DOWN);
+							if ($blockSideDown instanceof CoralBlock) {
+								if (!$blockSideDown->isDead()) {
+									foreach ($blockPos->sides() as $vector3) {
+										if ($world->getBlock($vector3) instanceof Water) {
+											$this->playParticleAndSound($world, $blockPos);
+											break;
+										}
 									}
 								}
 							}
+							return;
 						}
-						return;
-					}
-					if ($block->isSameType(VanillaBlocks::GRASS())) { # Grass
-						if ($block->getSide(FACING::UP)->isSameType(VanillaBlocks::AIR())) {
-							$this->playParticleAndSound($world, $blockPos);
+						if ($block->isSameType(VanillaBlocks::GRASS())) { # Grass
+							if ($block->getSide(FACING::UP)->isSameType(VanillaBlocks::AIR())) {
+								$this->playParticleAndSound($world, $blockPos);
+							}
+							return;
 						}
-						return;
-					}
-					if ($block->isSameType(VanillaBlocks::BAMBOO()) ||
-						$block->isSameType(VanillaBlocks::BAMBOO_SAPLING())) { # Bamboo and Bamboo Sapling
-						if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
-							$this->playParticleAndSound($world, $blockPos);
+						if ($block->isSameType(VanillaBlocks::BAMBOO()) || $block->isSameType(VanillaBlocks::BAMBOO_SAPLING())) { # Bamboo and Bamboo Sapling
+							if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
+								$this->playParticleAndSound($world, $blockPos);
+							}
+							return;
 						}
-						return;
+						$this->playParticleAndSound($world, $blockPos);
+						break;
 					}
-					$this->playParticleAndSound($world, $blockPos);
 				}
 			}
 		}
