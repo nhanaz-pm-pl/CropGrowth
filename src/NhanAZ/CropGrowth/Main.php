@@ -6,85 +6,174 @@ namespace NhanAZ\CropGrowth;
 
 use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
+use NhanAZ\CropGrowth\Plants\Bamboo;
+use NhanAZ\CropGrowth\Plants\BambooSapling;
+use NhanAZ\CropGrowth\Plants\Beetroots;
+use NhanAZ\CropGrowth\Plants\BrownMushroom;
+use NhanAZ\CropGrowth\Plants\Carrots;
+use NhanAZ\CropGrowth\Plants\Cocoa;
+use NhanAZ\CropGrowth\Plants\DirtBlock;
+use NhanAZ\CropGrowth\Plants\DoubleTallgrassAndLargeFern;
+use NhanAZ\CropGrowth\Plants\FernAndGrass;
+use NhanAZ\CropGrowth\Plants\Flowers\Allium;
+use NhanAZ\CropGrowth\Plants\Flowers\AzureBluet;
+use NhanAZ\CropGrowth\Plants\Flowers\BlueOrchid;
+use NhanAZ\CropGrowth\Plants\Flowers\Cornflower;
+use NhanAZ\CropGrowth\Plants\Flowers\Dandelion;
+use NhanAZ\CropGrowth\Plants\Flowers\LilyOfTheValley;
+use NhanAZ\CropGrowth\Plants\Flowers\OrangeTulip;
+use NhanAZ\CropGrowth\Plants\Flowers\OxeyeDaisy;
+use NhanAZ\CropGrowth\Plants\Flowers\PinkTulip;
+use NhanAZ\CropGrowth\Plants\Flowers\Poppy;
+use NhanAZ\CropGrowth\Plants\Flowers\RedTulip;
+use NhanAZ\CropGrowth\Plants\Flowers\WhiteTulip;
+use NhanAZ\CropGrowth\Plants\GrassBlock;
+use NhanAZ\CropGrowth\Plants\Lilacs;
+use NhanAZ\CropGrowth\Plants\MelonSeeds;
+use NhanAZ\CropGrowth\Plants\Peonies;
+use NhanAZ\CropGrowth\Plants\Potatoes;
+use NhanAZ\CropGrowth\Plants\PumpkinSeeds;
+use NhanAZ\CropGrowth\Plants\RedMushroom;
+use NhanAZ\CropGrowth\Plants\RootedDirt;
+use NhanAZ\CropGrowth\Plants\RoseBushes;
+use NhanAZ\CropGrowth\Plants\Saplings\AcaciaSapling;
+use NhanAZ\CropGrowth\Plants\Saplings\BirchSapling;
+use NhanAZ\CropGrowth\Plants\Saplings\DarkOakSapling;
+use NhanAZ\CropGrowth\Plants\Saplings\JungleSapling;
+use NhanAZ\CropGrowth\Plants\Saplings\OakSapling;
+use NhanAZ\CropGrowth\Plants\Saplings\SpruceSapling;
+use NhanAZ\CropGrowth\Plants\SeaPickle;
+use NhanAZ\CropGrowth\Plants\SugarCane;
+use NhanAZ\CropGrowth\Plants\Sunflowers;
+use NhanAZ\CropGrowth\Plants\SweetBerryBush;
+use NhanAZ\CropGrowth\Plants\TwistingVines;
+use NhanAZ\CropGrowth\Plants\WeepingVines;
+use NhanAZ\CropGrowth\Plants\Wheat;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
-use pocketmine\block\CoralBlock;
-use pocketmine\block\Dirt;
-use pocketmine\block\utils\DirtType;
-use pocketmine\block\VanillaBlocks;
-use pocketmine\block\Water;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
-use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\world\World;
 
-class Main extends PluginBase implements Listener {
+class Main extends PluginBase {
 
 	protected function onEnable(): void {
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		$this->registerEvents();
 	}
 
-	private function playParticleAndSound(World $world, Vector3 $blockPos): void {
+	public static function playParticleAndSound(World $world, Vector3 $blockPos): void {
 		$world->addParticle($blockPos, new CropGrowthParticle());
 		$world->addSound(Math::center($blockPos), new BoneMealUseSound());
 	}
 
-	public function onPlayerInteract(PlayerInteractEvent $event): void {
-		$block = $event->getBlock();
-		$blockPos = $block->getPosition();
-		$world = $blockPos->getWorld();
-		if ($event->getItem()->equals(VanillaItems::BONE_MEAL(), true)) {
-			if (PlayerInteractEvent::RIGHT_CLICK_BLOCK === $event->getAction()) {
-				foreach (Plants::plants() as $plant) {
-					if ($block->isSameType($plant)) {
-						if ($block instanceof Dirt) { # Dirts
-							if ($block->getDirtType()->equals(DirtType::ROOTED())) { # Rooted Dirt
-								if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
-									$this->playParticleAndSound($world, $blockPos);
-								}
-								return;
-							}
-							foreach ($blockPos->sides() as $vector3) { # Dirt
-								if ($world->getBlock($vector3) instanceof Water) {
-									$this->playParticleAndSound($world, $blockPos);
-									break;
-								}
-							}
-							return;
-						}
-						if ($block->isSameType(VanillaBlocks::SEA_PICKLE())) { # Sea Pickle
-							$blockSideDown = $block->getSide(Facing::DOWN);
-							if ($blockSideDown instanceof CoralBlock) {
-								if (!$blockSideDown->isDead()) {
-									foreach ($blockPos->sides() as $vector3) {
-										if ($world->getBlock($vector3) instanceof Water) {
-											$this->playParticleAndSound($world, $blockPos);
-											break;
-										}
-									}
-								}
-							}
-							return;
-						}
-						if ($block->isSameType(VanillaBlocks::GRASS())) { # Grass
-							if ($block->getSide(FACING::UP)->isSameType(VanillaBlocks::AIR())) {
-								$this->playParticleAndSound($world, $blockPos);
-							}
-							return;
-						}
-						if ($block->isSameType(VanillaBlocks::BAMBOO()) || $block->isSameType(VanillaBlocks::BAMBOO_SAPLING())) { # Bamboo and Bamboo Sapling
-							if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
-								$this->playParticleAndSound($world, $blockPos);
-							}
-							return;
-						}
-						$this->playParticleAndSound($world, $blockPos);
-						break;
-					}
-				}
-			}
+	public static function isUseBoneMeal(Item $item, int $action): bool {
+		if ($item->equals(VanillaItems::BONE_MEAL(), true) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
+			return true;
 		}
+		return false;
+	}
+
+	private function registerEvent(Listener $event): void {
+		$this->getServer()->getPluginManager()->registerEvents($event, $this);
+	}
+
+	/**
+	 * @see https://minecraft.fandom.com/wiki/Bone_Meal#Fertilizer
+	 */
+	private function registerEvents(): void {
+		$this->registerEvent(new Wheat());
+		$this->registerEvent(new Carrots());
+		$this->registerEvent(new Potatoes());
+
+		$this->registerEvent(new Beetroots());
+
+		# [https://minecraft.fandom.com/wiki/Bamboo#Data_values]
+		$this->registerEvent(new Bamboo());
+		$this->registerEvent(new BambooSapling());
+
+		$this->registerEvent(new MelonSeeds());
+		$this->registerEvent(new PumpkinSeeds());
+
+		# Saplings [https://minecraft.fandom.com/wiki/Sapling#Data_values]
+		$this->registerEvent(new OakSapling());
+		$this->registerEvent(new SpruceSapling());
+		$this->registerEvent(new BirchSapling());
+		$this->registerEvent(new JungleSapling());
+		$this->registerEvent(new AcaciaSapling());
+		$this->registerEvent(new DarkOakSapling());
+		# TODO: Mangrove Propagule
+		# TODO: Azalea
+		# TODO: Flowering Azalea
+		# TODO: Mangrove Propagule (not hanging)
+
+		$this->registerEvent(new Sunflowers());
+		$this->registerEvent(new Lilacs());
+		$this->registerEvent(new RoseBushes());
+		$this->registerEvent(new Peonies());
+
+		# Grass(s) [https://minecraft.fandom.com/wiki/Grass#Data_values]
+		$this->registerEvent(new FernAndGrass()); # (Ferns)
+		$this->registerEvent(new DoubleTallgrassAndLargeFern()); # (Tall Grass)
+		# TODO: Seagrass
+
+		# Mushrooms [https://minecraft.fandom.com/wiki/Mushroom#Data_values]
+		$this->registerEvent(new BrownMushroom);
+		$this->registerEvent(new RedMushroom);
+
+		$this->registerEvent(new Cocoa);
+
+		$this->registerEvent(new SweetBerryBush);
+
+		$this->registerEvent(new SeaPickle());
+
+		$this->registerEvent(new SugarCane());
+
+		# TODO: Kelp
+
+		# Flowers [https://minecraft.fandom.com/wiki/Flower#Data_values]
+		$this->registerEvent(new Dandelion());
+		$this->registerEvent(new Poppy());
+		$this->registerEvent(new BlueOrchid());
+		$this->registerEvent(new Allium());
+		$this->registerEvent(new AzureBluet());
+		$this->registerEvent(new RedTulip());
+		$this->registerEvent(new OrangeTulip());
+		$this->registerEvent(new WhiteTulip());
+		$this->registerEvent(new PinkTulip());
+		$this->registerEvent(new OxeyeDaisy());
+		$this->registerEvent(new Cornflower());
+		$this->registerEvent(new LilyOfTheValley());
+		# TODO: Wither Rose [Java Only]
+		# Sunflower [Imported]
+		# Lilac [Imported]
+		# Rose Bush [Imported]
+		# Peony [Imported]
+
+		# TODO: Fungus
+
+		$this->registerEvent(new WeepingVines());
+
+		$this->registerEvent(new TwistingVines());
+
+		# TODO: Cave Vines
+
+		# TODO: Glow Lichen
+
+		# TODO: Moss Block
+
+		# TODO: Big Dripleaf
+		# TODO: Small Dripleaf
+
+		$this->registerEvent(new DirtBlock());
+		$this->registerEvent(new RootedDirt());
+
+		# TODO: Mangrove Leaves
+
+		# Mangrove Propagule [Mentioned]
+
+		$this->registerEvent(new GrassBlock());
 	}
 }
