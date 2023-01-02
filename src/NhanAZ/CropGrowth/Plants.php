@@ -83,9 +83,9 @@ class Plants {
 
 			# TODO: Fungus
 
-			# TODO: Weeping Vines
+			VanillaBlocks::WEEPING_VINES(),
 
-			# TODO: Twisting Vines
+			VanillaBlocks::TWISTING_VINES(),
 
 			# TODO: Cave Vines
 
