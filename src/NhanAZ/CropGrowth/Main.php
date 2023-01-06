@@ -11,6 +11,7 @@ use NhanAZ\CropGrowth\Plants\BambooSapling;
 use NhanAZ\CropGrowth\Plants\Beetroots;
 use NhanAZ\CropGrowth\Plants\BrownMushroom;
 use NhanAZ\CropGrowth\Plants\Carrots;
+use NhanAZ\CropGrowth\Plants\CoarseDirt;
 use NhanAZ\CropGrowth\Plants\Cocoa;
 use NhanAZ\CropGrowth\Plants\DirtBlock;
 use NhanAZ\CropGrowth\Plants\DoubleTallgrassAndLargeFern;
@@ -188,6 +189,7 @@ class Main extends PluginBase {
 
 		$this->registerEvent(new DirtBlock());
 		$this->registerEvent(new RootedDirt());
+		$this->registerEvent(new CoarseDirt());
 
 		# TODO: Mangrove Leaves
 
