@@ -15,7 +15,7 @@ class SweetBerryBush implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::SWEET_BERRY_BUSH())) {
-				Main::playParticleAndSound($block);
+				Main::onGrow($block);
 			}
 		}
 	}

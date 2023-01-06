@@ -67,7 +67,7 @@ class Main extends PluginBase {
 		$this->registerEvents();
 	}
 
-	public static function playParticleAndSound(Block $block): void {
+	public static function onGrow(Block $block): void {
 		$blockPos = $block->getPosition();
 		$world = $blockPos->getWorld();
 		$world->addParticle($blockPos, new CropGrowthParticle());

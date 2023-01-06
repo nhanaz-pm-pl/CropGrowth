@@ -21,7 +21,7 @@ class DirtBlock implements Listener {
 				if ($block instanceof Dirt) {
 					if ($block->getDirtType()->equals(DirtType::NORMAL())) {
 						if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::WATER())) {
-							Main::playParticleAndSound($block);
+							Main::onGrow($block);
 						}
 					}
 				}

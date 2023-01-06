@@ -17,7 +17,7 @@ class SandBlock implements Listener {
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::SAND())) {
 				if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::WATER())) {
-					Main::playParticleAndSound($block);
+					Main::onGrow($block);
 				}
 			}
 		}

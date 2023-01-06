@@ -15,7 +15,7 @@ class Cocoa implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::COCOA_POD())) {
-				Main::playParticleAndSound($block);
+				Main::onGrow($block);
 			}
 		}
 	}

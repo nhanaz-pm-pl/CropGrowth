@@ -15,7 +15,7 @@ class LilyOfTheValley implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::LILY_OF_THE_VALLEY())) {
-				Main::playParticleAndSound($block);
+				Main::onGrow($block);
 			}
 		}
 	}

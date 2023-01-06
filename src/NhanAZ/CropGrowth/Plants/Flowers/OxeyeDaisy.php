@@ -15,7 +15,7 @@ class OxeyeDaisy implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::OXEYE_DAISY())) {
-				Main::playParticleAndSound($block);
+				Main::onGrow($block);
 			}
 		}
 	}

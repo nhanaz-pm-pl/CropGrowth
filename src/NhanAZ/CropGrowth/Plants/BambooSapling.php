@@ -17,7 +17,7 @@ class BambooSapling implements Listener {
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::BAMBOO_SAPLING())) {
 				if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
-					Main::playParticleAndSound($block);
+					Main::onGrow($block);
 				}
 			}
 		}

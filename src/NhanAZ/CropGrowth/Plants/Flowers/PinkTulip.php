@@ -15,7 +15,7 @@ class PinkTulip implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::PINK_TULIP())) {
-				Main::playParticleAndSound($block);
+				Main::onGrow($block);
 			}
 		}
 	}

@@ -21,7 +21,7 @@ class RootedDirt implements Listener {
 				if ($block instanceof Dirt) {
 					if ($block->getDirtType()->equals(DirtType::ROOTED())) {
 						if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
-							Main::playParticleAndSound($block);
+							Main::onGrow($block);
 						}
 					}
 				}

@@ -21,7 +21,7 @@ class SeaPickle implements Listener {
 				if ($blockSideDown instanceof CoralBlock) {
 					if (!$blockSideDown->isDead()) {
 						if (Main::isInWater($block)) {
-							Main::playParticleAndSound($block);
+							Main::onGrow($block);
 						}
 					}
 				}
