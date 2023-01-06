@@ -20,8 +20,10 @@ class GravelBlock implements Listener {
 			if ($block->isSameType(VanillaBlocks::GRAVEL())) {
 				foreach (Main::aquaticPlants() as $plant) {
 					if ($block->getSide(Facing::UP)->isSameType($plant)) {
-						Main::onGrow($block);
-						break;
+						if (Main::isInWater($block->getSide(Facing::UP))) {
+							Main::onGrow($block);
+							break;
+						}
 					}
 				}
 			}

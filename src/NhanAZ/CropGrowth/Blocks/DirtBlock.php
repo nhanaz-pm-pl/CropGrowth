@@ -24,8 +24,10 @@ class DirtBlock implements Listener {
 					if ($block->getDirtType()->equals(DirtType::NORMAL())) {
 						foreach (Main::aquaticPlants() as $plant) {
 							if ($block->getSide(Facing::UP)->isSameType($plant)) {
-								Main::onGrow($block);
-								break;
+								if (Main::isInWater($block->getSide(Facing::UP))) {
+									Main::onGrow($block);
+									break;
+								}
 							}
 						}
 					}

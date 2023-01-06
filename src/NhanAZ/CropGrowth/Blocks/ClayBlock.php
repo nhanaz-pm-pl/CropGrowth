@@ -20,8 +20,10 @@ class ClayBlock implements Listener {
 			if ($block->isSameType(VanillaBlocks::CLAY())) {
 				foreach (Main::aquaticPlants() as $plant) {
 					if ($block->getSide(Facing::UP)->isSameType($plant)) {
-						Main::onGrow($block);
-						break;
+						if (Main::isInWater($block->getSide(Facing::UP))) {
+							Main::onGrow($block);
+							break;
+						}
 					}
 				}
 			}
