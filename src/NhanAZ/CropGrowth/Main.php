@@ -7,7 +7,9 @@ namespace NhanAZ\CropGrowth;
 use NhanAZ\CropGrowth\Blocks\CoarseDirt;
 use NhanAZ\CropGrowth\Blocks\DirtBlock;
 use NhanAZ\CropGrowth\Blocks\GrassBlock;
+use NhanAZ\CropGrowth\Blocks\RedSandBlock;
 use NhanAZ\CropGrowth\Blocks\RootedDirt;
+use NhanAZ\CropGrowth\Blocks\SandBlock;
 use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Plants\Bamboo;
@@ -190,6 +192,8 @@ class Main extends PluginBase {
 		$this->registerEvent(new DirtBlock());
 		$this->registerEvent(new RootedDirt());
 		$this->registerEvent(new CoarseDirt());
+		$this->registerEvent(new SandBlock());
+		$this->registerEvent(new RedSandBlock());
 
 		# TODO: Mangrove Leaves
 
