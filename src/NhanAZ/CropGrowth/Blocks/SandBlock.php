@@ -18,8 +18,11 @@ class SandBlock implements Listener {
 		$item = $event->getItem();
 		if ($item instanceof Fertilizer) {
 			if ($block->isSameType(VanillaBlocks::SAND())) {
-				if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::WATER())) {
-					Main::onGrow($block);
+				foreach (Main::aquaticPlants() as $plant) {
+					if ($block->getSide(Facing::UP)->isSameType($plant)) {
+						Main::onGrow($block);
+						break;
+					}
 				}
 			}
 		}

@@ -22,8 +22,11 @@ class CoarseDirt implements Listener {
 			if ($block->isSameType(VanillaBlocks::DIRT())) {
 				if ($block instanceof Dirt) {
 					if ($block->getDirtType()->equals(DirtType::COARSE())) {
-						if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::WATER())) {
-							Main::onGrow($block);
+						foreach (Main::aquaticPlants() as $plant) {
+							if ($block->getSide(Facing::UP)->isSameType($plant)) {
+								Main::onGrow($block);
+								break;
+							}
 						}
 					}
 				}

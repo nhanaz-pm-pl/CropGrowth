@@ -54,6 +54,7 @@ use NhanAZ\CropGrowth\Plants\WeepingVines;
 use NhanAZ\CropGrowth\Plants\Wheat;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
 use pocketmine\block\Block;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\block\Water;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
@@ -86,6 +87,24 @@ class Main extends PluginBase {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * @see https://minecraft.fandom.com/wiki/Plant#Other_Than_Plants
+	 * @return array<Block>
+	 */
+	public static function aquaticPlants() {
+		return [
+			VanillaBlocks::WATER(), # [Exception]
+			# Algae [https://minecraft.fandom.com/wiki/Plant#Algae]
+			# TODO: Kelp
+
+			# Animals [https://minecraft.fandom.com/wiki/Plant#Animals]
+			VanillaBlocks::CORAL(),
+			# VanillaBlocks::CORAL_BLOCK()
+			VanillaBlocks::CORAL_FAN(),
+			VanillaBlocks::SEA_PICKLE()
+		];
 	}
 
 	private function registerEvent(Listener $event): void {
