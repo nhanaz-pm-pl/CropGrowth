@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NhanAZ\CropGrowth\Plants;
 
 use NhanAZ\CropGrowth\Main;
-use NhanAZ\CropGrowth\Utils\InWater;
 use pocketmine\block\CoralBlock;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
@@ -21,7 +20,7 @@ class SeaPickle implements Listener {
 				$blockSideDown = $block->getSide(Facing::DOWN);
 				if ($blockSideDown instanceof CoralBlock) {
 					if (!$blockSideDown->isDead()) {
-						if (InWater::inWater($block)) {
+						if (Main::isInWater($block)) {
 							Main::playParticleAndSound($block);
 						}
 					}

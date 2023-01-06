@@ -51,6 +51,7 @@ use NhanAZ\CropGrowth\Plants\WeepingVines;
 use NhanAZ\CropGrowth\Plants\Wheat;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
 use pocketmine\block\Block;
+use pocketmine\block\Water;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
@@ -72,6 +73,23 @@ class Main extends PluginBase {
 
 	public static function isUseBoneMeal(Item $item, int $action): bool {
 		if ($item->equals(VanillaItems::BONE_MEAL(), true) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
+			return true;
+		}
+		return false;
+	}
+
+	/** Check water inside the block itself (not supported on the API yet) */
+	public static function isInWater(Block $block): bool {
+		$blockPos = $block->getPosition();
+		$world = $blockPos->getWorld();
+		$hasWater = false;
+		foreach ($blockPos->sides() as $vector3) {
+			if ($world->getBlock($vector3) instanceof Water) {
+				$hasWater = true;
+				break;
+			}
+		}
+		if ($hasWater) {
 			return true;
 		}
 		return false;
