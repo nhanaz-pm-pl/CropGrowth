@@ -8,12 +8,14 @@ use NhanAZ\CropGrowth\Main;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\item\Fertilizer;
 
 class Lilacs implements Listener {
 
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
-		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
+		$item = $event->getItem();
+		if ($item instanceof Fertilizer) {
 			if ($block->isSameType(VanillaBlocks::LILAC())) {
 				Main::onGrow($block);
 			}
