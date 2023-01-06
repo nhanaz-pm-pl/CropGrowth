@@ -16,13 +16,12 @@ class RootedDirt implements Listener {
 
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
-		$blockPos = $block->getPosition();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::DIRT())) {
 				if ($block instanceof Dirt) {
 					if ($block->getDirtType()->equals(DirtType::ROOTED())) {
 						if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
-							Main::playParticleAndSound($blockPos->getWorld(), $blockPos);
+							Main::playParticleAndSound($block);
 						}
 					}
 				}

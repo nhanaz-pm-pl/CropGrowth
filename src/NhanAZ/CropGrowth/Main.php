@@ -50,13 +50,12 @@ use NhanAZ\CropGrowth\Plants\TwistingVines;
 use NhanAZ\CropGrowth\Plants\WeepingVines;
 use NhanAZ\CropGrowth\Plants\Wheat;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
+use pocketmine\block\Block;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
-use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
-use pocketmine\world\World;
 
 class Main extends PluginBase {
 
@@ -64,7 +63,9 @@ class Main extends PluginBase {
 		$this->registerEvents();
 	}
 
-	public static function playParticleAndSound(World $world, Vector3 $blockPos): void {
+	public static function playParticleAndSound(Block $block): void {
+		$blockPos = $block->getPosition();
+		$world = $blockPos->getWorld();
 		$world->addParticle($blockPos, new CropGrowthParticle());
 		$world->addSound(Math::center($blockPos), new BoneMealUseSound());
 	}
@@ -120,12 +121,12 @@ class Main extends PluginBase {
 		# TODO: Seagrass
 
 		# Mushrooms [https://minecraft.fandom.com/wiki/Mushroom#Data_values]
-		$this->registerEvent(new BrownMushroom);
-		$this->registerEvent(new RedMushroom);
+		$this->registerEvent(new BrownMushroom());
+		$this->registerEvent(new RedMushroom());
 
-		$this->registerEvent(new Cocoa);
+		$this->registerEvent(new Cocoa());
 
-		$this->registerEvent(new SweetBerryBush);
+		$this->registerEvent(new SweetBerryBush());
 
 		$this->registerEvent(new SeaPickle());
 
