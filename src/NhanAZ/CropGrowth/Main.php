@@ -59,6 +59,9 @@ use pocketmine\block\Block;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\block\Water;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase {
@@ -72,6 +75,13 @@ class Main extends PluginBase {
 		$world = $blockPos->getWorld();
 		$world->addParticle($blockPos, new CropGrowthParticle());
 		$world->addSound(Math::center($blockPos), new BoneMealUseSound());
+	}
+
+	public static function isUseBoneMeal(Item $item, int $action): bool {
+		if ($item->equals(VanillaItems::BONE_MEAL(), true) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
+			return true;
+		}
+		return false;
 	}
 
 	/** Check water inside the block itself (not supported on the API yet) */

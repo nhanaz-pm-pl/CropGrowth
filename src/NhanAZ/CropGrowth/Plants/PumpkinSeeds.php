@@ -8,14 +8,12 @@ use NhanAZ\CropGrowth\Main;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\item\Fertilizer;
 
 class PumpkinSeeds implements Listener {
 
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
-		$item = $event->getItem();
-		if ($item instanceof Fertilizer) {
+		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::PUMPKIN_STEM())) {
 				Main::onGrow($block);
 			}

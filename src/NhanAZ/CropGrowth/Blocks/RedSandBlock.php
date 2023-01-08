@@ -8,15 +8,13 @@ use NhanAZ\CropGrowth\Main;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\item\Fertilizer;
 use pocketmine\math\Facing;
 
 class RedSandBlock implements Listener {
 
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
-		$item = $event->getItem();
-		if ($item instanceof Fertilizer) {
+		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::RED_SAND())) {
 				foreach (Main::aquaticPlants() as $plant) {
 					if ($block->getSide(Facing::UP)->isSameType($plant)) {
