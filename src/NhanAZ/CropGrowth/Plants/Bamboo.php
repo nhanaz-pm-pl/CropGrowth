@@ -9,7 +9,6 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Fertilizer;
-use pocketmine\math\Facing;
 
 class Bamboo implements Listener {
 
@@ -18,9 +17,8 @@ class Bamboo implements Listener {
 		$item = $event->getItem();
 		if ($item instanceof Fertilizer) {
 			if ($block->isSameType(VanillaBlocks::BAMBOO())) {
-				if ($block->getSide(Facing::UP)->isSameType(VanillaBlocks::AIR())) {
-					Main::onGrow($block);
-				}
+				# TODO: Only do this when the bamboo grows unhindered by any blocks and the bamboo has not reached the limit height.
+				Main::onGrow($block);
 			}
 		}
 	}
