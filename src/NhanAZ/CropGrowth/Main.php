@@ -15,7 +15,6 @@ use NhanAZ\CropGrowth\Blocks\SandBlock;
 use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Plants\Bamboo;
-use NhanAZ\CropGrowth\Plants\BambooSapling;
 use NhanAZ\CropGrowth\Plants\Flowers;
 use NhanAZ\CropGrowth\Plants\General;
 use NhanAZ\CropGrowth\Plants\Saplings;
@@ -95,9 +94,7 @@ class Main extends PluginBase {
 	private function registerEvents(): void {
 		$this->registerEvent(new General());
 
-		# [https://minecraft.fandom.com/wiki/Bamboo#Data_values]
 		$this->registerEvent(new Bamboo());
-		$this->registerEvent(new BambooSapling());
 
 		# Saplings [https://minecraft.fandom.com/wiki/Sapling#Data_values]
 		$this->registerEvent(new Saplings()); # [Oak Sapling, Spruce Sapling, Birch Sapling, Jungle Sapling, Acacia Sapling, Dark Oak Sapling]
