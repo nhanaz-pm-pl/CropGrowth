@@ -22,29 +22,14 @@ use NhanAZ\CropGrowth\Plants\Carrots;
 use NhanAZ\CropGrowth\Plants\Cocoa;
 use NhanAZ\CropGrowth\Plants\DoubleTallgrassAndLargeFern;
 use NhanAZ\CropGrowth\Plants\FernAndGrass;
-use NhanAZ\CropGrowth\Plants\Flowers\Allium;
-use NhanAZ\CropGrowth\Plants\Flowers\AzureBluet;
-use NhanAZ\CropGrowth\Plants\Flowers\BlueOrchid;
-use NhanAZ\CropGrowth\Plants\Flowers\Cornflower;
-use NhanAZ\CropGrowth\Plants\Flowers\Dandelion;
-use NhanAZ\CropGrowth\Plants\Flowers\LilyOfTheValley;
-use NhanAZ\CropGrowth\Plants\Flowers\OrangeTulip;
-use NhanAZ\CropGrowth\Plants\Flowers\OxeyeDaisy;
-use NhanAZ\CropGrowth\Plants\Flowers\PinkTulip;
-use NhanAZ\CropGrowth\Plants\Flowers\Poppy;
-use NhanAZ\CropGrowth\Plants\Flowers\RedTulip;
-use NhanAZ\CropGrowth\Plants\Flowers\WhiteTulip;
-use NhanAZ\CropGrowth\Plants\Lilacs;
+use NhanAZ\CropGrowth\Plants\Flowers;
 use NhanAZ\CropGrowth\Plants\MelonSeeds;
-use NhanAZ\CropGrowth\Plants\Peonies;
 use NhanAZ\CropGrowth\Plants\Potatoes;
 use NhanAZ\CropGrowth\Plants\PumpkinSeeds;
 use NhanAZ\CropGrowth\Plants\RedMushroom;
-use NhanAZ\CropGrowth\Plants\RoseBushes;
 use NhanAZ\CropGrowth\Plants\Saplings;
 use NhanAZ\CropGrowth\Plants\SeaPickle;
 use NhanAZ\CropGrowth\Plants\SugarCane;
-use NhanAZ\CropGrowth\Plants\Sunflowers;
 use NhanAZ\CropGrowth\Plants\SweetBerryBush;
 use NhanAZ\CropGrowth\Plants\TwistingVines;
 use NhanAZ\CropGrowth\Plants\WeepingVines;
@@ -142,11 +127,6 @@ class Main extends PluginBase {
 		# TODO: Flowering Azalea
 		# TODO: Mangrove Propagule (not hanging)
 
-		$this->registerEvent(new Sunflowers());
-		$this->registerEvent(new Lilacs());
-		$this->registerEvent(new RoseBushes());
-		$this->registerEvent(new Peonies());
-
 		# Grass(s) [https://minecraft.fandom.com/wiki/Grass#Data_values]
 		$this->registerEvent(new FernAndGrass()); # (Ferns)
 		$this->registerEvent(new DoubleTallgrassAndLargeFern()); # (Tall Grass)
@@ -166,19 +146,8 @@ class Main extends PluginBase {
 
 		# TODO: Kelp
 
-		# Flowers [https://minecraft.fandom.com/wiki/Flower#Data_values]
-		$this->registerEvent(new Dandelion());
-		$this->registerEvent(new Poppy());
-		$this->registerEvent(new BlueOrchid());
-		$this->registerEvent(new Allium());
-		$this->registerEvent(new AzureBluet());
-		$this->registerEvent(new RedTulip());
-		$this->registerEvent(new OrangeTulip());
-		$this->registerEvent(new WhiteTulip());
-		$this->registerEvent(new PinkTulip());
-		$this->registerEvent(new OxeyeDaisy());
-		$this->registerEvent(new Cornflower());
-		$this->registerEvent(new LilyOfTheValley());
+		# Flowers [https://minecraft.fandom.com/wiki/Flower]
+		$this->registerEvent(new Flowers());
 		# TODO: Wither Rose [Java Only]
 		# Sunflower [Imported]
 		# Lilac [Imported]
