@@ -16,23 +16,13 @@ use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Plants\Bamboo;
 use NhanAZ\CropGrowth\Plants\BambooSapling;
-use NhanAZ\CropGrowth\Plants\Beetroots;
-use NhanAZ\CropGrowth\Plants\BrownMushroom;
-use NhanAZ\CropGrowth\Plants\Carrots;
-use NhanAZ\CropGrowth\Plants\Cocoa;
 use NhanAZ\CropGrowth\Plants\DoubleTallgrassAndLargeFern;
 use NhanAZ\CropGrowth\Plants\FernAndGrass;
 use NhanAZ\CropGrowth\Plants\Flowers;
-use NhanAZ\CropGrowth\Plants\MelonSeeds;
-use NhanAZ\CropGrowth\Plants\Potatoes;
-use NhanAZ\CropGrowth\Plants\PumpkinSeeds;
-use NhanAZ\CropGrowth\Plants\RedMushroom;
+use NhanAZ\CropGrowth\Plants\General;
 use NhanAZ\CropGrowth\Plants\Saplings;
 use NhanAZ\CropGrowth\Plants\SeaPickle;
 use NhanAZ\CropGrowth\Plants\SugarCane;
-use NhanAZ\CropGrowth\Plants\SweetBerryBush;
-use NhanAZ\CropGrowth\Plants\Vines;
-use NhanAZ\CropGrowth\Plants\Wheat;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
 use pocketmine\block\Block;
 use pocketmine\block\VanillaBlocks;
@@ -106,18 +96,11 @@ class Main extends PluginBase {
 	 * @see https://minecraft.fandom.com/wiki/Bone_Meal#Fertilizer
 	 */
 	private function registerEvents(): void {
-		$this->registerEvent(new Wheat());
-		$this->registerEvent(new Carrots());
-		$this->registerEvent(new Potatoes());
-
-		$this->registerEvent(new Beetroots());
+		$this->registerEvent(new General());
 
 		# [https://minecraft.fandom.com/wiki/Bamboo#Data_values]
 		$this->registerEvent(new Bamboo());
 		$this->registerEvent(new BambooSapling());
-
-		$this->registerEvent(new MelonSeeds());
-		$this->registerEvent(new PumpkinSeeds());
 
 		# Saplings [https://minecraft.fandom.com/wiki/Sapling#Data_values]
 		$this->registerEvent(new Saplings()); # [Oak Sapling, Spruce Sapling, Birch Sapling, Jungle Sapling, Acacia Sapling, Dark Oak Sapling]
@@ -126,18 +109,7 @@ class Main extends PluginBase {
 		# TODO: Flowering Azalea
 		# TODO: Mangrove Propagule (not hanging)
 
-		# Grass(s) [https://minecraft.fandom.com/wiki/Grass#Data_values]
-		$this->registerEvent(new FernAndGrass()); # (Ferns)
-		$this->registerEvent(new DoubleTallgrassAndLargeFern()); # (Tall Grass)
 		# TODO: Seagrass
-
-		# Mushrooms [https://minecraft.fandom.com/wiki/Mushroom#Data_values]
-		$this->registerEvent(new BrownMushroom());
-		$this->registerEvent(new RedMushroom());
-
-		$this->registerEvent(new Cocoa());
-
-		$this->registerEvent(new SweetBerryBush());
 
 		$this->registerEvent(new SeaPickle());
 
@@ -154,8 +126,6 @@ class Main extends PluginBase {
 		# Peony [Imported]
 
 		# TODO: Fungus
-
-		$this->registerEvent(new Vines()); # [Weeping Vines, Twisting Vines]
 
 		# TODO: Cave Vines
 
