@@ -15,19 +15,19 @@ class General implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			$iterable_expression = [
-				VanillaBlocks::WHEAT(),
-				VanillaBlocks::CARROTS(),
-				VanillaBlocks::POTATOES(),
 				VanillaBlocks::BEETROOTS(),
-				VanillaBlocks::MELON_STEM(),
-				VanillaBlocks::PUMPKIN_STEM(),
 				VanillaBlocks::BROWN_MUSHROOM(),
-				VanillaBlocks::RED_MUSHROOM(),
+				VanillaBlocks::CARROTS(),
 				VanillaBlocks::COCOA_POD(),
+				VanillaBlocks::MELON_STEM(),
+				VanillaBlocks::POTATOES(),
+				VanillaBlocks::PUMPKIN_STEM(),
+				VanillaBlocks::RED_MUSHROOM(),
+				VanillaBlocks::SUGARCANE(),
 				VanillaBlocks::SWEET_BERRY_BUSH(),
-				VanillaBlocks::WEEPING_VINES(),
 				VanillaBlocks::TWISTING_VINES(),
-				VanillaBlocks::SUGARCANE()
+				VanillaBlocks::WEEPING_VINES(),
+				VanillaBlocks::WHEAT()
 			];
 			foreach ($iterable_expression as $value) {
 				if ($block->isSameType($value)) {

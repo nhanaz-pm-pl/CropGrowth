@@ -15,22 +15,22 @@ class Flower implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			$flowers = [
-				VanillaBlocks::DANDELION(),
-				VanillaBlocks::POPPY(),
-				VanillaBlocks::BLUE_ORCHID(),
 				VanillaBlocks::ALLIUM(),
 				VanillaBlocks::AZURE_BLUET(),
-				VanillaBlocks::RED_TULIP(),
-				VanillaBlocks::ORANGE_TULIP(),
-				VanillaBlocks::WHITE_TULIP(),
-				VanillaBlocks::PINK_TULIP(),
-				VanillaBlocks::OXEYE_DAISY(),
+				VanillaBlocks::BLUE_ORCHID(),
 				VanillaBlocks::CORNFLOWER(),
-				VanillaBlocks::LILY_OF_THE_VALLEY(),
-				VanillaBlocks::SUNFLOWER(),
+				VanillaBlocks::DANDELION(),
 				VanillaBlocks::LILAC(),
+				VanillaBlocks::LILY_OF_THE_VALLEY(),
+				VanillaBlocks::ORANGE_TULIP(),
+				VanillaBlocks::OXEYE_DAISY(),
+				VanillaBlocks::PEONY(),
+				VanillaBlocks::PINK_TULIP(),
+				VanillaBlocks::POPPY(),
+				VanillaBlocks::RED_TULIP(),
 				VanillaBlocks::ROSE_BUSH(),
-				VanillaBlocks::PEONY()
+				VanillaBlocks::SUNFLOWER(),
+				VanillaBlocks::WHITE_TULIP()
 			];
 			foreach ($flowers as $flower) {
 				if ($block->isSameType($flower)) {

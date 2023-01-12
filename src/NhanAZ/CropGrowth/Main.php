@@ -4,14 +4,9 @@ declare(strict_types=1);
 
 namespace NhanAZ\CropGrowth;
 
-use NhanAZ\CropGrowth\Behavior\Block\ClayBlock;
-use NhanAZ\CropGrowth\Behavior\Block\CoarseDirt;
 use NhanAZ\CropGrowth\Behavior\Block\DirtBlock;
 use NhanAZ\CropGrowth\Behavior\Block\GrassBlock;
-use NhanAZ\CropGrowth\Behavior\Block\GravelBlock;
-use NhanAZ\CropGrowth\Behavior\Block\RedSandBlock;
-use NhanAZ\CropGrowth\Behavior\Block\RootedDirt;
-use NhanAZ\CropGrowth\Behavior\Block\SandBlock;
+use NhanAZ\CropGrowth\Behavior\Block\InWater;
 use NhanAZ\CropGrowth\Behavior\Plant\Bamboo;
 use NhanAZ\CropGrowth\Behavior\Plant\Flower;
 use NhanAZ\CropGrowth\Behavior\Plant\General;
@@ -83,31 +78,26 @@ class Main extends PluginBase {
 	}
 
 	private function registerEvents(): void {
-		$this->registerEvent(new General());
 		$this->registerEvent(new Bamboo());
+		$this->registerEvent(new DirtBlock());
+		$this->registerEvent(new Flower());
+		$this->registerEvent(new General());
+		$this->registerEvent(new GrassBlock());
+		$this->registerEvent(new InWater());
 		$this->registerEvent(new Sapling());
 		$this->registerEvent(new SeaPickle());
-		$this->registerEvent(new Flower());
-		$this->registerEvent(new DirtBlock());
-		$this->registerEvent(new RootedDirt());
-		$this->registerEvent(new CoarseDirt());
-		$this->registerEvent(new SandBlock());
-		$this->registerEvent(new RedSandBlock());
-		$this->registerEvent(new ClayBlock());
-		$this->registerEvent(new GravelBlock());
-		$this->registerEvent(new GrassBlock());
-		# TODO: Mangrove Propagule
 		# TODO: Azalea
-		# TODO: Flowering Azalea
-		# TODO: Mangrove Propagule
-		# TODO: Seagrass
-		# TODO: Kelp
-		# TODO: Fungus
-		# TODO: Cave Vines
-		# TODO: Glow Lichen
-		# TODO: Moss Block
 		# TODO: Big Dripleaf
-		# TODO: Small Dripleaf
+		# TODO: Cave Vines
+		# TODO: Flowering Azalea
+		# TODO: Fungus
+		# TODO: Glow Lichen
+		# TODO: Kelp
 		# TODO: Mangrove Leaves
+		# TODO: Mangrove Propagule
+		# TODO: Mangrove Propagule
+		# TODO: Moss Block
+		# TODO: Seagrass
+		# TODO: Small Dripleaf
 	}
 }

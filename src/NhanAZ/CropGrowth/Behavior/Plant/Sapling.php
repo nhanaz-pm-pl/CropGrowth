@@ -15,12 +15,12 @@ class Sapling implements Listener {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			$saplings = [
-				VanillaBlocks::OAK_SAPLING(),
-				VanillaBlocks::SPRUCE_SAPLING(),
-				VanillaBlocks::BIRCH_SAPLING(),
-				VanillaBlocks::JUNGLE_SAPLING(),
 				VanillaBlocks::ACACIA_SAPLING(),
-				VanillaBlocks::DARK_OAK_SAPLING()
+				VanillaBlocks::BIRCH_SAPLING(),
+				VanillaBlocks::DARK_OAK_SAPLING(),
+				VanillaBlocks::JUNGLE_SAPLING(),
+				VanillaBlocks::OAK_SAPLING(),
+				VanillaBlocks::SPRUCE_SAPLING()
 			];
 			foreach ($saplings as $sapling) {
 				if ($block->isSameType($sapling)) {

@@ -19,7 +19,7 @@ class DirtBlock implements Listener {
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->isSameType(VanillaBlocks::DIRT())) {
 				if ($block instanceof Dirt) {
-					if ($block->getDirtType()->equals(DirtType::NORMAL())) {
+					if ($block->getDirtType()->equals(DirtType::NORMAL()) || $block->getDirtType()->equals(DirtType::COARSE())) {
 						foreach (Main::aquaticPlants() as $plant) {
 							if ($block->getSide(Facing::UP)->isSameType($plant)) {
 								if (Main::isInWater($block->getSide(Facing::UP))) {
@@ -28,6 +28,13 @@ class DirtBlock implements Listener {
 								}
 							}
 						}
+						return;
+					}
+					if ($block->getDirtType()->equals(DirtType::ROOTED())) {
+						if ($block->getSide(Facing::DOWN)->isSameType(VanillaBlocks::AIR())) {
+							Main::onGrow($block);
+						}
+						return;
 					}
 				}
 			}
