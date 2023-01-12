@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NhanAZ\CropGrowth\Plants;
+namespace NhanAZ\CropGrowth\Behavior\Plant;
 
 use NhanAZ\CropGrowth\Main;
 use pocketmine\block\VanillaBlocks;
@@ -21,18 +21,12 @@ class General implements Listener {
 				VanillaBlocks::BEETROOTS(),
 				VanillaBlocks::MELON_STEM(),
 				VanillaBlocks::PUMPKIN_STEM(),
-
-				# Mushrooms [https://minecraft.fandom.com/wiki/Mushroom#Data_values]
 				VanillaBlocks::BROWN_MUSHROOM(),
 				VanillaBlocks::RED_MUSHROOM(),
-
 				VanillaBlocks::COCOA_POD(),
-
 				VanillaBlocks::SWEET_BERRY_BUSH(),
-
 				VanillaBlocks::WEEPING_VINES(),
 				VanillaBlocks::TWISTING_VINES(),
-
 				VanillaBlocks::SUGARCANE()
 			];
 			foreach ($iterable_expression as $value) {

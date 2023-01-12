@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NhanAZ\CropGrowth\Plants;
+namespace NhanAZ\CropGrowth\Behavior\Plant;
 
 use NhanAZ\CropGrowth\Main;
 use pocketmine\block\VanillaBlocks;
@@ -12,9 +12,6 @@ use pocketmine\math\Facing;
 
 class Bamboo implements Listener {
 
-	/**
-	 * @see https://minecraft.fandom.com/wiki/Bamboo
-	 */
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {

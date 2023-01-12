@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NhanAZ\CropGrowth\Blocks;
+namespace NhanAZ\CropGrowth\Behavior\Block;
 
 use NhanAZ\CropGrowth\Main;
 use pocketmine\block\Dirt;
