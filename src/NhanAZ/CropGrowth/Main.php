@@ -31,8 +31,7 @@ use NhanAZ\CropGrowth\Plants\Saplings;
 use NhanAZ\CropGrowth\Plants\SeaPickle;
 use NhanAZ\CropGrowth\Plants\SugarCane;
 use NhanAZ\CropGrowth\Plants\SweetBerryBush;
-use NhanAZ\CropGrowth\Plants\TwistingVines;
-use NhanAZ\CropGrowth\Plants\WeepingVines;
+use NhanAZ\CropGrowth\Plants\Vines;
 use NhanAZ\CropGrowth\Plants\Wheat;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
 use pocketmine\block\Block;
@@ -156,9 +155,7 @@ class Main extends PluginBase {
 
 		# TODO: Fungus
 
-		$this->registerEvent(new WeepingVines());
-
-		$this->registerEvent(new TwistingVines());
+		$this->registerEvent(new Vines()); # [Weeping Vines, Twisting Vines]
 
 		# TODO: Cave Vines
 

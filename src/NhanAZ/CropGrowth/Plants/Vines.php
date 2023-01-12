@@ -9,13 +9,20 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 
-class TwistingVines implements Listener {
+class Vines implements Listener {
 
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
-			if ($block->isSameType(VanillaBlocks::TWISTING_VINES())) {
-				Main::onGrow($block);
+			$vines = [
+				VanillaBlocks::WEEPING_VINES(),
+				VanillaBlocks::TWISTING_VINES()
+			];
+			foreach ($vines as $vine) {
+				if ($block->isSameType($vine)) {
+					Main::onGrow($block);
+					break;
+				}
 			}
 		}
 	}
