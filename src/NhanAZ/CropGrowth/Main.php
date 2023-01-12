@@ -41,12 +41,7 @@ use NhanAZ\CropGrowth\Plants\Potatoes;
 use NhanAZ\CropGrowth\Plants\PumpkinSeeds;
 use NhanAZ\CropGrowth\Plants\RedMushroom;
 use NhanAZ\CropGrowth\Plants\RoseBushes;
-use NhanAZ\CropGrowth\Plants\Saplings\AcaciaSapling;
-use NhanAZ\CropGrowth\Plants\Saplings\BirchSapling;
-use NhanAZ\CropGrowth\Plants\Saplings\DarkOakSapling;
-use NhanAZ\CropGrowth\Plants\Saplings\JungleSapling;
-use NhanAZ\CropGrowth\Plants\Saplings\OakSapling;
-use NhanAZ\CropGrowth\Plants\Saplings\SpruceSapling;
+use NhanAZ\CropGrowth\Plants\Saplings;
 use NhanAZ\CropGrowth\Plants\SeaPickle;
 use NhanAZ\CropGrowth\Plants\SugarCane;
 use NhanAZ\CropGrowth\Plants\Sunflowers;
@@ -141,12 +136,7 @@ class Main extends PluginBase {
 		$this->registerEvent(new PumpkinSeeds());
 
 		# Saplings [https://minecraft.fandom.com/wiki/Sapling#Data_values]
-		$this->registerEvent(new OakSapling());
-		$this->registerEvent(new SpruceSapling());
-		$this->registerEvent(new BirchSapling());
-		$this->registerEvent(new JungleSapling());
-		$this->registerEvent(new AcaciaSapling());
-		$this->registerEvent(new DarkOakSapling());
+		$this->registerEvent(new Saplings()); # [Oak Sapling, Spruce Sapling, Birch Sapling, Jungle Sapling, Acacia Sapling, Dark Oak Sapling]
 		# TODO: Mangrove Propagule
 		# TODO: Azalea
 		# TODO: Flowering Azalea
