@@ -31,7 +31,9 @@ class General implements Listener {
 				VanillaBlocks::SWEET_BERRY_BUSH(),
 
 				VanillaBlocks::WEEPING_VINES(),
-				VanillaBlocks::TWISTING_VINES()
+				VanillaBlocks::TWISTING_VINES(),
+
+				VanillaBlocks::SUGARCANE()
 			];
 			foreach ($iterable_expression as $value) {
 				if ($block->isSameType($value)) {

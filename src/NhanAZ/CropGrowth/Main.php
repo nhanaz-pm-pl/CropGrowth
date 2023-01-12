@@ -16,13 +16,10 @@ use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Plants\Bamboo;
 use NhanAZ\CropGrowth\Plants\BambooSapling;
-use NhanAZ\CropGrowth\Plants\DoubleTallgrassAndLargeFern;
-use NhanAZ\CropGrowth\Plants\FernAndGrass;
 use NhanAZ\CropGrowth\Plants\Flowers;
 use NhanAZ\CropGrowth\Plants\General;
 use NhanAZ\CropGrowth\Plants\Saplings;
 use NhanAZ\CropGrowth\Plants\SeaPickle;
-use NhanAZ\CropGrowth\Plants\SugarCane;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
 use pocketmine\block\Block;
 use pocketmine\block\VanillaBlocks;
@@ -112,8 +109,6 @@ class Main extends PluginBase {
 		# TODO: Seagrass
 
 		$this->registerEvent(new SeaPickle());
-
-		$this->registerEvent(new SugarCane());
 
 		# TODO: Kelp
 
