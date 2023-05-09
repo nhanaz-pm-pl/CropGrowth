@@ -22,6 +22,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
+use pocketmine\math\Facing;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase {
@@ -71,6 +72,16 @@ class Main extends PluginBase {
 			BlockTypeIds::WATER # [Exception]
 			# TODO: Kelp
 		];
+	}
+
+	public static function isCanGrow(Block $block): bool {
+		while ($block->getTypeId() === BlockTypeIds::BAMBOO) {
+			$block = $block->getSide(Facing::UP);
+			if ($block->getTypeId() === BlockTypeIds::AIR) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private function registerEvent(Listener $event): void {

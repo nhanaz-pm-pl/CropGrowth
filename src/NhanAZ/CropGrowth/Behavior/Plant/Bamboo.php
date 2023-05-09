@@ -22,9 +22,11 @@ class Bamboo implements Listener {
 				}
 			}
 			if ($block->getTypeId() === BlockTypeIds::BAMBOO) {
-				# TODO: Only do this when the bamboo grows unhindered by any blocks and the bamboo has not reached the limit height.
-				Main::onGrow($block);
-				return;
+				if (Main::isCanGrow($block)) {
+					# TODO: If the bamboo has grown to its maximum height, do not execute the code below.
+					Main::onGrow($block);
+					return;
+				}
 			}
 		}
 	}
