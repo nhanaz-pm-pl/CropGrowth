@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NhanAZ\CropGrowth\Behavior\Plant;
 
 use NhanAZ\CropGrowth\Main;
-use pocketmine\block\VanillaBlocks;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 
@@ -14,23 +14,23 @@ class General implements Listener {
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
-			$iterable_expression = [
-				VanillaBlocks::BEETROOTS(),
-				VanillaBlocks::BROWN_MUSHROOM(),
-				VanillaBlocks::CARROTS(),
-				VanillaBlocks::COCOA_POD(),
-				VanillaBlocks::MELON_STEM(),
-				VanillaBlocks::POTATOES(),
-				VanillaBlocks::PUMPKIN_STEM(),
-				VanillaBlocks::RED_MUSHROOM(),
-				VanillaBlocks::SUGARCANE(),
-				VanillaBlocks::SWEET_BERRY_BUSH(),
-				VanillaBlocks::TWISTING_VINES(),
-				VanillaBlocks::WEEPING_VINES(),
-				VanillaBlocks::WHEAT()
+			$generalCropTypeIds = [
+				BlockTypeIds::BEETROOTS,
+				BlockTypeIds::BROWN_MUSHROOM,
+				BlockTypeIds::CARROTS,
+				BlockTypeIds::COCOA_POD,
+				BlockTypeIds::MELON_STEM,
+				BlockTypeIds::POTATOES,
+				BlockTypeIds::PUMPKIN_STEM,
+				BlockTypeIds::RED_MUSHROOM,
+				BlockTypeIds::SUGARCANE,
+				BlockTypeIds::SWEET_BERRY_BUSH,
+				BlockTypeIds::TWISTING_VINES,
+				BlockTypeIds::WEEPING_VINES,
+				BlockTypeIds::WHEAT,
 			];
-			foreach ($iterable_expression as $value) {
-				if ($block->isSameType($value)) {
+			foreach ($generalCropTypeIds as $cropTypeId) {
+				if ($block->getTypeId() === $cropTypeId) {
 					Main::onGrow($block);
 					break;
 				}

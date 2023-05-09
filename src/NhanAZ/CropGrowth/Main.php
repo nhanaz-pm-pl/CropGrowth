@@ -8,6 +8,7 @@ use NhanAZ\CropGrowth\Behavior\Block\DirtBlock;
 use NhanAZ\CropGrowth\Behavior\Block\GrassBlock;
 use NhanAZ\CropGrowth\Behavior\Block\InWater;
 use NhanAZ\CropGrowth\Behavior\Plant\Bamboo;
+use NhanAZ\CropGrowth\Behavior\Plant\CaveVines;
 use NhanAZ\CropGrowth\Behavior\Plant\Flower;
 use NhanAZ\CropGrowth\Behavior\Plant\General;
 use NhanAZ\CropGrowth\Behavior\Plant\Sapling;
@@ -16,8 +17,7 @@ use NhanAZ\CropGrowth\Math\Math;
 use NhanAZ\CropGrowth\Particle\CropGrowthParticle;
 use NhanAZ\CropGrowth\Sound\BoneMealUseSound;
 use pocketmine\block\Block;
-use pocketmine\block\VanillaBlocks;
-use pocketmine\block\Water;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
@@ -49,7 +49,7 @@ class Main extends PluginBase {
 		$world = $blockPos->getWorld();
 		$hasWater = false;
 		foreach ($blockPos->sides() as $vector3) {
-			if ($world->getBlock($vector3) instanceof Water) {
+			if ($world->getBlock($vector3)->getTypeId() === BlockTypeIds::WATER) {
 				$hasWater = true;
 				break;
 			}
@@ -61,14 +61,14 @@ class Main extends PluginBase {
 	}
 
 	/**
-	 * @return array<Block>
+	 * @return array<BlockTypeIds>
 	 */
-	public static function aquaticPlants() {
+	public static function aquaticPlantsTypeIds() {
 		return [
-			VanillaBlocks::CORAL(),
-			VanillaBlocks::CORAL_FAN(),
-			VanillaBlocks::SEA_PICKLE(),
-			VanillaBlocks::WATER() # [Exception]
+			BlockTypeIds::CORAL,
+			BlockTypeIds::CORAL_FAN,
+			BlockTypeIds::SEA_PICKLE,
+			BlockTypeIds::WATER # [Exception]
 			# TODO: Kelp
 		];
 	}
@@ -79,6 +79,7 @@ class Main extends PluginBase {
 
 	private function registerEvents(): void {
 		$this->registerEvent(new Bamboo());
+		$this->registerEvent(new CaveVines());
 		$this->registerEvent(new DirtBlock());
 		$this->registerEvent(new Flower());
 		$this->registerEvent(new General());
@@ -88,7 +89,6 @@ class Main extends PluginBase {
 		$this->registerEvent(new SeaPickle());
 		# TODO: Azalea
 		# TODO: Big Dripleaf
-		# TODO: Cave Vines
 		# TODO: Flowering Azalea
 		# TODO: Fungus
 		# TODO: Glow Lichen

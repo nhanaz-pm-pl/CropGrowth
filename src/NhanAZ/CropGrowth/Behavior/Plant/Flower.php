@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NhanAZ\CropGrowth\Behavior\Plant;
 
 use NhanAZ\CropGrowth\Main;
-use pocketmine\block\VanillaBlocks;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 
@@ -14,26 +14,26 @@ class Flower implements Listener {
 	public function onPlayerInteract(PlayerInteractEvent $event): void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
-			$flowers = [
-				VanillaBlocks::ALLIUM(),
-				VanillaBlocks::AZURE_BLUET(),
-				VanillaBlocks::BLUE_ORCHID(),
-				VanillaBlocks::CORNFLOWER(),
-				VanillaBlocks::DANDELION(),
-				VanillaBlocks::LILAC(),
-				VanillaBlocks::LILY_OF_THE_VALLEY(),
-				VanillaBlocks::ORANGE_TULIP(),
-				VanillaBlocks::OXEYE_DAISY(),
-				VanillaBlocks::PEONY(),
-				VanillaBlocks::PINK_TULIP(),
-				VanillaBlocks::POPPY(),
-				VanillaBlocks::RED_TULIP(),
-				VanillaBlocks::ROSE_BUSH(),
-				VanillaBlocks::SUNFLOWER(),
-				VanillaBlocks::WHITE_TULIP()
+			$flowersTypeIds = [
+				BlockTypeIds::ALLIUM,
+				BlockTypeIds::AZURE_BLUET,
+				BlockTypeIds::BLUE_ORCHID,
+				BlockTypeIds::CORNFLOWER,
+				BlockTypeIds::DANDELION,
+				BlockTypeIds::LILAC,
+				BlockTypeIds::LILY_OF_THE_VALLEY,
+				BlockTypeIds::ORANGE_TULIP,
+				BlockTypeIds::OXEYE_DAISY,
+				BlockTypeIds::PEONY,
+				BlockTypeIds::PINK_TULIP,
+				BlockTypeIds::POPPY,
+				BlockTypeIds::RED_TULIP,
+				BlockTypeIds::ROSE_BUSH,
+				BlockTypeIds::SUNFLOWER,
+				BlockTypeIds::WHITE_TULIP
 			];
-			foreach ($flowers as $flower) {
-				if ($block->isSameType($flower)) {
+			foreach ($flowersTypeIds as $flowerTypeId) {
+				if ($block->getTypeId() === $flowerTypeId) {
 					Main::onGrow($block);
 					break;
 				}
