@@ -43,12 +43,22 @@ class Bamboo implements Listener {
 	}
 
 	private function getBamboHeight(Block $block): int {
+		$block = $this->seekToTop($block);
+		$world = $block->getPosition()->getWorld();
 		$height = 0;
-		while ($block->getTypeId() === BlockTypeIds::BAMBOO) {
+		while ($world->getBlock($block->getPosition()->subtract(0, $height, 0))->getTypeId() === BlockTypeIds::BAMBOO) {
 			$height++;
-			$block = $block->getSide(Facing::UP);
 		}
 		return $height;
+	}
+
+	private function seekToTop(Block $block) : Block{
+		$world = $block->getPosition()->getWorld();
+		$top = $block;
+		while(($next = $world->getBlock($top->getPosition()->up())) instanceof Bamboo && ($next->getTypeId() === BlockTypeIds::BAMBOO)){
+			$top = $next;
+		}
+		return $top;
 	}
 
 	/**
