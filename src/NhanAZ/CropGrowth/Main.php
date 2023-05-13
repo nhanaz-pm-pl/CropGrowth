@@ -22,7 +22,6 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
-use pocketmine\math\Facing;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase {
@@ -56,7 +55,7 @@ class Main extends PluginBase {
 	/**
 	 * @return array<BlockTypeIds>
 	 */
-	public static function aquaticPlantsTypeIds() : array{
+	public static function aquaticPlantsTypeIds(): array {
 		return [
 			BlockTypeIds::CORAL,
 			BlockTypeIds::CORAL_FAN,

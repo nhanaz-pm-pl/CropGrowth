@@ -10,7 +10,6 @@ use pocketmine\block\BlockTypeIds;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\math\Facing;
-use pocketmine\world\World;
 
 class Bamboo implements Listener {
 
@@ -52,10 +51,10 @@ class Bamboo implements Listener {
 		return $height;
 	}
 
-	private function seekToTop(Block $block) : Block{
+	private function seekToTop(Block $block): Block {
 		$world = $block->getPosition()->getWorld();
 		$top = $block;
-		while((($next = $world->getBlock($top->getPosition()->up()))->getTypeId() === BlockTypeIds::BAMBOO)){
+		while ((($next = $world->getBlock($top->getPosition()->up()))->getTypeId() === BlockTypeIds::BAMBOO)) {
 			$top = $next;
 		}
 		return $top;
@@ -64,7 +63,7 @@ class Bamboo implements Listener {
 	/**
 	 * PM-COPYPASTA (See pocketmine/block/Bamboo.php)
 	 */
-	private function getOffsetSeed(int $x, int $y, int $z) : int{
+	private function getOffsetSeed(int $x, int $y, int $z): int {
 		$p1 = gmp_mul($z, 0x6ebfff5);
 		$p2 = gmp_mul($x, 0x2fc20f);
 		$p3 = $y;
@@ -75,7 +74,7 @@ class Bamboo implements Listener {
 		return gmp_intval(gmp_and($fullResult, 0xffffffff));
 	}
 
-	private function getMaxHeight(int $x, int $z) : int{
+	private function getMaxHeight(int $x, int $z): int {
 		return 12 + ($this->getOffsetSeed($x, 0, $z) % 5);
 	}
 }
