@@ -39,7 +39,7 @@ class Main extends PluginBase {
 	}
 
 	public static function isUseBoneMeal(Item $item, int $action): bool {
-		return $item->equals(VanillaItems::BONE_MEAL(), true) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK;
+		return $item->equals(VanillaItems::BONE_MEAL()) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK;
 	}
 
 	public static function isInWater(Block $block): bool {
@@ -56,7 +56,7 @@ class Main extends PluginBase {
 	/**
 	 * @return array<BlockTypeIds>
 	 */
-	public static function aquaticPlantsTypeIds() {
+	public static function aquaticPlantsTypeIds() : array{
 		return [
 			BlockTypeIds::CORAL,
 			BlockTypeIds::CORAL_FAN,
@@ -64,16 +64,6 @@ class Main extends PluginBase {
 			BlockTypeIds::WATER # [Exception]
 			# TODO: Kelp
 		];
-	}
-
-	public static function isCanGrow(Block $block): bool {
-		while ($block->getTypeId() === BlockTypeIds::BAMBOO) {
-			$block = $block->getSide(Facing::UP);
-			if ($block->getTypeId() === BlockTypeIds::AIR) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	private function registerEvent(Listener $event): void {
