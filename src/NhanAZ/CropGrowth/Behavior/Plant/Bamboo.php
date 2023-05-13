@@ -47,8 +47,9 @@ class Bamboo implements Listener {
 		$blockPos = $block->getPosition();
 		$world = $blockPos->getWorld();
 		$topBamboo = $block;
-		while ($world->getBlock($blockPos->add(0, 1, 0))->getTypeId() === BlockTypeIds::BAMBOO) {
+		while ($world->getBlock($blockPos)->getTypeId() === BlockTypeIds::BAMBOO) {
 			$topBamboo = $world->getBlock($blockPos);
+			$blockPos = $blockPos->getSide(Facing::UP);
 		}
 		return $topBamboo;
 	}
