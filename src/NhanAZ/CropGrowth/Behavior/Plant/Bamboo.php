@@ -31,7 +31,7 @@ class Bamboo implements Listener {
 		}
 	}
 
-	public function isCanGrow(Block $block): bool {
+	private function isCanGrow(Block $block): bool {
 		if ($this->getBamboHeight($block) >= $this->getMaxHeight($block->getPosition()->getFloorX(), $block->getPosition()->getFloorZ())) {
 			return false;
 		}
