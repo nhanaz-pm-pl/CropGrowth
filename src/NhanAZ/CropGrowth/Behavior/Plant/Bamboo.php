@@ -32,6 +32,7 @@ class Bamboo implements Listener {
 	}
 
 	private function isCanGrow(Block $block): bool {
+		$block = $this->seekToTop($block);
 		if ($this->getBamboHeight($block) >= $this->getMaxHeight($block->getPosition()->getFloorX(), $block->getPosition()->getFloorZ())) {
 			return false;
 		}
@@ -43,7 +44,6 @@ class Bamboo implements Listener {
 	}
 
 	private function getBamboHeight(Block $block): int {
-		$block = $this->seekToTop($block);
 		$world = $block->getPosition()->getWorld();
 		$height = 0;
 		while ($world->getBlock($block->getPosition()->subtract(0, $height, 0))->getTypeId() === BlockTypeIds::BAMBOO) {
@@ -55,7 +55,7 @@ class Bamboo implements Listener {
 	private function seekToTop(Block $block) : Block{
 		$world = $block->getPosition()->getWorld();
 		$top = $block;
-		while(($next = $world->getBlock($top->getPosition()->up())) instanceof Bamboo && ($next->getTypeId() === BlockTypeIds::BAMBOO)){
+		while((($next = $world->getBlock($top->getPosition()->up()))->getTypeId() === BlockTypeIds::BAMBOO)){
 			$top = $next;
 		}
 		return $top;
