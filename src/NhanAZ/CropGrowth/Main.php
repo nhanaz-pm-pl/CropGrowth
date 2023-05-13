@@ -39,24 +39,16 @@ class Main extends PluginBase {
 	}
 
 	public static function isUseBoneMeal(Item $item, int $action): bool {
-		if ($item->equals(VanillaItems::BONE_MEAL(), true) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
-			return true;
-		}
-		return false;
+		return $item->equals(VanillaItems::BONE_MEAL(), true) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK;
 	}
 
 	public static function isInWater(Block $block): bool {
 		$blockPos = $block->getPosition();
 		$world = $blockPos->getWorld();
-		$hasWater = false;
 		foreach ($blockPos->sides() as $vector3) {
 			if ($world->getBlock($vector3)->getTypeId() === BlockTypeIds::WATER) {
-				$hasWater = true;
-				break;
+				return true;
 			}
-		}
-		if ($hasWater) {
-			return true;
 		}
 		return false;
 	}
