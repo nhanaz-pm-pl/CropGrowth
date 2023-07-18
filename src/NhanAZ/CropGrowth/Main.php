@@ -80,7 +80,6 @@ class Main extends PluginBase {
 		$this->registerEvent(new Sapling());
 		$this->registerEvent(new SeaPickle());
 		# TODO: Azalea
-		# TODO: Big Dripleaf
 		# TODO: Flowering Azalea
 		# TODO: Fungus
 		# TODO: Glow Lichen
@@ -90,6 +89,5 @@ class Main extends PluginBase {
 		# TODO: Mangrove Propagule
 		# TODO: Moss Block
 		# TODO: Seagrass
-		# TODO: Small Dripleaf
 	}
 }
