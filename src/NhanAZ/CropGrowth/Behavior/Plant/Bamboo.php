@@ -10,10 +10,15 @@ use pocketmine\block\BlockTypeIds;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\math\Facing;
+use function gmp_add;
+use function gmp_and;
+use function gmp_intval;
+use function gmp_mul;
+use function gmp_xor;
 
 class Bamboo implements Listener {
 
-	public function onPlayerInteract(PlayerInteractEvent $event): void {
+	public function onPlayerInteract(PlayerInteractEvent $event) : void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->getTypeId() === BlockTypeIds::BAMBOO_SAPLING) {
@@ -30,7 +35,7 @@ class Bamboo implements Listener {
 		}
 	}
 
-	private function isCanGrow(Block $block): bool {
+	private function isCanGrow(Block $block) : bool {
 		$block = $this->seekToTop($block);
 		if ($this->getBamboHeight($block) >= $this->getMaxHeight($block->getPosition()->getFloorX(), $block->getPosition()->getFloorZ())) {
 			return false;
@@ -42,7 +47,7 @@ class Bamboo implements Listener {
 		return false;
 	}
 
-	private function getBamboHeight(Block $block): int {
+	private function getBamboHeight(Block $block) : int {
 		$world = $block->getPosition()->getWorld();
 		$height = 0;
 		while ($world->getBlock($block->getPosition()->subtract(0, $height, 0))->getTypeId() === BlockTypeIds::BAMBOO) {
@@ -51,7 +56,7 @@ class Bamboo implements Listener {
 		return $height;
 	}
 
-	private function seekToTop(Block $block): Block {
+	private function seekToTop(Block $block) : Block {
 		$world = $block->getPosition()->getWorld();
 		$top = $block;
 		while ((($next = $world->getBlock($top->getPosition()->up()))->getTypeId() === BlockTypeIds::BAMBOO)) {
@@ -63,7 +68,7 @@ class Bamboo implements Listener {
 	/**
 	 * PM-COPYPASTA (See pocketmine/block/Bamboo.php)
 	 */
-	private function getOffsetSeed(int $x, int $y, int $z): int {
+	private function getOffsetSeed(int $x, int $y, int $z) : int {
 		$p1 = gmp_mul($z, 0x6ebfff5);
 		$p2 = gmp_mul($x, 0x2fc20f);
 		$p3 = $y;
@@ -74,7 +79,7 @@ class Bamboo implements Listener {
 		return gmp_intval(gmp_and($fullResult, 0xffffffff));
 	}
 
-	private function getMaxHeight(int $x, int $z): int {
+	private function getMaxHeight(int $x, int $z) : int {
 		return 12 + ($this->getOffsetSeed($x, 0, $z) % 5);
 	}
 }

@@ -12,7 +12,7 @@ use pocketmine\math\Facing;
 
 class GrassBlock implements Listener {
 
-	public function onPlayerInteract(PlayerInteractEvent $event): void {
+	public function onPlayerInteract(PlayerInteractEvent $event) : void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->getTypeId() === BlockTypeIds::GRASS) {

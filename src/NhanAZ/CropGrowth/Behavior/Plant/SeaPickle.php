@@ -13,7 +13,7 @@ use pocketmine\math\Facing;
 
 class SeaPickle implements Listener {
 
-	public function onPlayerInteract(PlayerInteractEvent $event): void {
+	public function onPlayerInteract(PlayerInteractEvent $event) : void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			if ($block->getTypeId() === BlockTypeIds::SEA_PICKLE) {

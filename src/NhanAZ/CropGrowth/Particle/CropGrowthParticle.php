@@ -10,7 +10,7 @@ use pocketmine\world\particle\Particle;
 
 class CropGrowthParticle implements Particle {
 
-	public function encode(Vector3 $vector3): array {
+	public function encode(Vector3 $vector3) : array {
 		return [LevelEventPacket::standardParticle(
 			particleId: 0,
 			data: 0,

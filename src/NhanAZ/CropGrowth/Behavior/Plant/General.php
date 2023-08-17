@@ -11,7 +11,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 
 class General implements Listener {
 
-	public function onPlayerInteract(PlayerInteractEvent $event): void {
+	public function onPlayerInteract(PlayerInteractEvent $event) : void {
 		$block = $event->getBlock();
 		if (Main::isUseBoneMeal($event->getItem(), $event->getAction())) {
 			$generalCropTypeIds = [
