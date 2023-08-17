@@ -26,22 +26,22 @@ use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase {
 
-	protected function onEnable(): void {
+	protected function onEnable() : void {
 		$this->registerEvents();
 	}
 
-	public static function onGrow(Block $block): void {
+	public static function onGrow(Block $block) : void {
 		$blockPos = $block->getPosition();
 		$world = $blockPos->getWorld();
 		$world->addParticle($blockPos, new CropGrowthParticle());
 		$world->addSound(Math::center($blockPos), new BoneMealUseSound());
 	}
 
-	public static function isUseBoneMeal(Item $item, int $action): bool {
+	public static function isUseBoneMeal(Item $item, int $action) : bool {
 		return $item->equals(VanillaItems::BONE_MEAL()) && $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK;
 	}
 
-	public static function isInWater(Block $block): bool {
+	public static function isInWater(Block $block) : bool {
 		$blockPos = $block->getPosition();
 		$world = $blockPos->getWorld();
 		foreach ($blockPos->sides() as $vector3) {
@@ -55,7 +55,7 @@ class Main extends PluginBase {
 	/**
 	 * @return array<int, int>
 	 */
-	public static function aquaticPlantsTypeIds(): array {
+	public static function aquaticPlantsTypeIds() : array {
 		return [
 			BlockTypeIds::CORAL,
 			BlockTypeIds::CORAL_FAN,
@@ -65,11 +65,11 @@ class Main extends PluginBase {
 		];
 	}
 
-	private function registerEvent(Listener $event): void {
+	private function registerEvent(Listener $event) : void {
 		$this->getServer()->getPluginManager()->registerEvents($event, $this);
 	}
 
-	private function registerEvents(): void {
+	private function registerEvents() : void {
 		$this->registerEvent(new Bamboo());
 		$this->registerEvent(new CaveVines());
 		$this->registerEvent(new DirtBlock());
