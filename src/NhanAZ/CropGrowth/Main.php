@@ -53,7 +53,7 @@ class Main extends PluginBase {
 	}
 
 	/**
-	 * @return array<BlockTypeIds>
+	 * @return array<int, int>
 	 */
 	public static function aquaticPlantsTypeIds(): array {
 		return [
