@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NhanAZ\CropGrowth\Math;
+namespace NhanAZ\CropGrowth\Utils;
 
 use pocketmine\math\Vector3;
 
