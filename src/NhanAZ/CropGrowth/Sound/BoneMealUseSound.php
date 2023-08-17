@@ -11,7 +11,7 @@ use pocketmine\world\sound\Sound;
 
 class BoneMealUseSound implements Sound {
 
-	public function encode(Vector3 $vector3): array {
+	public function encode(Vector3 $vector3) : array {
 		return [LevelEventPacket::create(
 			eventId: LevelEvent::BONE_MEAL_USE,
 			eventData: 0,
