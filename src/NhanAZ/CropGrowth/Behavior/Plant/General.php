@@ -31,7 +31,8 @@ class General implements Listener {
 				BlockTypeIds::BIG_DRIPLEAF_HEAD,
 				BlockTypeIds::BIG_DRIPLEAF_STEM,
 				BlockTypeIds::SMALL_DRIPLEAF,
-				BlockTypeIds::PINK_PETALS
+				BlockTypeIds::PINK_PETALS,
+				BlockTypeIds::TORCHFLOWER_CROP
 			];
 			foreach ($generalCropTypeIds as $cropTypeId) {
 				if ($block->getTypeId() === $cropTypeId) {
